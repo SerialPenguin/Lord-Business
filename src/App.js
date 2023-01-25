@@ -1,7 +1,17 @@
 import React from "react";
+import Header from "./components/Header";
+import Characters from "./components/Characters";
+//import "./App.css";
+//import background from "./assets/StarWarsDarth.png"
 
 export default function App() {
     return (
-        <h1>Lord Business</h1>
+        
+        <div>
+        <Header />
+        <Characters />
+        
+        </div>
     )
 }
+
