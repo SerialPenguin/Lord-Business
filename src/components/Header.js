@@ -7,8 +7,8 @@ export default function Header(){
         <header className="page-header">
               
    
-            <button>Characters</button>
-            <button>Planets</button>
+            <button value="characters">Characters</button>
+            <button value="planets">Planets</button>
             <button>Movies</button>
             <button>Species</button>
             <button>Vehicles</button>
