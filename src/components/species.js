@@ -1,30 +1,30 @@
 import React, { Component } from "react";
 
-class People extends Component {
+class Species extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            people: [],
+            species: [],
             isLoaded: false,
         }
     }
 
     componentDidMount() {
 
-        fetch('https://swapi.dev/api/people/')
+        fetch('https://swapi.dev/api/species/')
         .then(res => res.json())
         .then(json => {
             this.setState ({
                 isLoaded: true,
-                people: json,
+                species: json,
             })
         })
     }
 
     render() {
 
-        let { isLoaded, people } = this.state;
+        let { isLoaded, species } = this.state;
 
         if (!isLoaded) {
             return <div>Loading...</div>
@@ -34,12 +34,12 @@ class People extends Component {
                     {/* Data has been loaded */}
 
                     <ul>
-                        {people.results.map(item => (
+                        {species.results.map(item => (
                             <li key={item.results} className="list">
-                                Name: {item.name} | 
-                                Height: {item.height} |
-                                Weight: {item.mass} |
-                                Gender: {item.gender}
+                                Race: {item.name} | 
+                                Average height: {item.average_height} cm |
+                                Average lifespan: {item.average_lifespan} years |
+                                Classification: {item.classification}
                             </li>
                         ))}
                     </ul>
@@ -52,4 +52,4 @@ class People extends Component {
     
 }
 
-export default People;
+export default Species;
