@@ -1,31 +1,30 @@
 import React, { Component } from "react";
-import App from "../App";
 
-class People extends Component {
+class Planets extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            people: [],
+            planets: [],
             isLoaded: false,
         }
     }
 
     componentDidMount() {
 
-        fetch('https://swapi.dev/api/people/')
+        fetch('https://swapi.dev/api/planets/')
         .then(res => res.json())
         .then(json => {
             this.setState ({
                 isLoaded: true,
-                people: json,
+                planets: json,
             })
         })
     }
 
     render() {
 
-        let { isLoaded, people } = this.state;
+        let { isLoaded, planets } = this.state;
 
         if (!isLoaded) {
             return <div>Loading...</div>
@@ -35,17 +34,16 @@ class People extends Component {
                     {/* Data has been loaded */}
 
                     <ul>
-                        {people.results.map(item => (
+                        {planets.results.map(item => (
                             <li key={item.results} className="list">
                                 Name: {item.name} | 
-                                Height: {item.height} |
-                                Weight: {item.mass} |
-                                Gender: {item.gender}
+                                Rotation Time: {item.rotation_period} days |
+                                Diameter: {item.diameter} km |
+                                Climate: {item.climate}
                             </li>
-                        
                         ))}
                     </ul>
-                           
+
                     <button>Previous</button>
                     <button>Next</button>
 
@@ -53,12 +51,8 @@ class People extends Component {
             )
         }
     }
-    
 
+    
 }
 
-
-export default People;
-
-
-
+export default Planets;
