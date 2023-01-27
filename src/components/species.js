@@ -44,6 +44,9 @@ class Species extends Component {
                         ))}
                     </ul>
 
+                    <button>Previous</button>
+                    <button>Next</button>
+
                 </div>
             )
         }

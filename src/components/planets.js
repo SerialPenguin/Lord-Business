@@ -37,12 +37,15 @@ class Planets extends Component {
                         {planets.results.map(item => (
                             <li key={item.results} className="list">
                                 Name: {item.name} | 
-                                Rotation Time: {item.rotation_time} days |
+                                Rotation Time: {item.rotation_period} days |
                                 Diameter: {item.diameter} km |
                                 Climate: {item.climate}
                             </li>
                         ))}
                     </ul>
+
+                    <button>Previous</button>
+                    <button>Next</button>
 
                 </div>
             )

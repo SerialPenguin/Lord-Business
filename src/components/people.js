@@ -44,12 +44,15 @@ class People extends Component {
                         ))}
                     </ul>
 
+                    <button>Previous</button>
+                    <button>Next</button>
+
                 </div>
             )
         }
     }
 
-    
+
 }
 
 export default People;
