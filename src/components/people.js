@@ -22,6 +22,8 @@ class People extends Component {
         })
     }
 
+    
+
     render() {
 
         let { isLoaded, people } = this.state;
@@ -30,9 +32,9 @@ class People extends Component {
             return <div>Loading...</div>
         } else {
             return (
-                <div className="App">
-                    {/* Data has been loaded */}
-
+                <div className="App">*/
+                    //{/* Data has been loaded */}
+/*
                     <ul>
                         {people.results.map(item => (
                             <li key={item.results} className="list">
@@ -56,3 +58,41 @@ class People extends Component {
 }
 
 export default People;
+
+
+/*
+import React, { useState, useEffect } from "react";
+import { ReactDOM } from "react";
+
+export default function People(){
+
+    const [people, setPeople] = useState([])
+
+    useEffect(()=> {
+        async function fetchPeople(){
+            let res = await fetch("https://swapi.dev/api/people/")
+            let data = await res.json();
+            
+            setPeople(data.results)
+
+        console.log(people)
+        }
+      
+        
+        
+    
+
+    }, [])
+    function Football(){
+      return alert ('great shot')
+       }
+
+    return (
+        
+    <div>
+        <button onClick={Football}>click!</button>
+    </div>
+    
+)
+}
+*/
