@@ -4,8 +4,7 @@ import Header from "./components/Header";
 import People from "./components/people";
 import Planets from "./components/planets";
 import Species from "./components/species";
-// import Starships from "./components/starships"
-import AppTwo from "./components/AppTwo"
+import Test from "./components/test";
 //import "./App.css";
 //import background from "./assets/StarWarsDarth.png"
 
@@ -13,11 +12,14 @@ export default function App() {
     return (
         
         <div>
+        <Test />
         <Header />
         <People />
+       
         <Planets />
         <Species />
-        <AppTwo />
+        
+        
         
         
         </div>
