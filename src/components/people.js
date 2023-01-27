@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class People extends Component {
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -22,6 +23,7 @@ class People extends Component {
         })
     }
 
+
     render() {
 
         let { isLoaded, people } = this.state;
@@ -33,9 +35,9 @@ class People extends Component {
                 <div className="App">
                     {/* Data has been loaded */}
 
-                    <ul>
+                    <ul className="info-container">
                         {people.results.map(item => (
-                            <li key={item.results} className="list">
+                            <li key={item.results} className="list-container">
                                 Name: {item.name} | 
                                 Height: {item.height} |
                                 Weight: {item.mass} |
@@ -51,8 +53,6 @@ class People extends Component {
             )
         }
     }
-
-
 }
 
 export default People;

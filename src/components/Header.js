@@ -5,8 +5,7 @@ export default function Header(){
     return (
    
         <header className="page-header">
-              
-   
+            
             <button>Characters</button>
             <button>Planets</button>
             <button>Movies</button>
@@ -14,6 +13,5 @@ export default function Header(){
             <button>Vehicles</button>
             <button>Starships</button>
         </header>
-      
     )
 }

@@ -29,7 +29,7 @@ class Planets extends Component {
         if (!isLoaded) {
             return <div>Loading...</div>
         } else {
-            return (
+            return ( 
                 <div className="App">
                     {/* Data has been loaded */}
 
@@ -51,8 +51,6 @@ class Planets extends Component {
             )
         }
     }
-
-    
 }
 
 export default Planets;
