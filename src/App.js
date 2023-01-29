@@ -1,28 +1,40 @@
-import React from "react";
-import Header from "./components/Header";
-// import Characters from "./components/Characters";
-import People from "./components/people";
-import Planets from "./components/planets";
-import Species from "./components/species";
-import Test from "./components/test";
-//import "./App.css";
-//import background from "./assets/StarWarsDarth.png"
+// import React from "react";
+// // import Header from "./components/Header";
+// import "./App.css";
+// import List from './components/List';
+// import {useState, useEffect} from "react";
+// // import Test from './components/test';
 
-export default function App() {
-    return (
-        
-        <div>
-        <Test />
-        <Header />
-        <People />
-       
-        <Planets />
-        <Species />
-        
-        
-        
-        
-        </div>
-    )
-}
 
+
+
+// class App extends React.Component {
+
+    
+//   componentDidMount(){
+//     this.fetchData();
+//   }
+
+//   async fetchData(){
+//     const url = 'https://swapi.dev/api/people/';
+//     return fetch(url)
+//         .then(response => response.json())
+//         .then(parsedJSON => this.setState({results: parsedJSON.results}))
+//         .catch(error => console.log(error));
+        
+// }
+
+    
+
+// render() {
+//     const data =[{"name": "test1"},{"name":"test2"}];
+//     return (
+//       <div>
+//       {data.map(function(d, idx){
+//          return (<li key={idx}>{d.name}</li>)
+//        })}
+//       </div>
+//     );
+//   }
+// }
+// export default App

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-function Starships() {
+function Vehicles() {
   const [names, setNames] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const fetchNames = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://swapi.dev/api/starships/');
+      const response = await fetch('https://swapi.dev/api/vehicles/');
       const data = await response.json();
       setNames(data.results.map(result => result.name));
     } catch (error) {
@@ -18,7 +18,7 @@ function Starships() {
   };
 
   useEffect(() => {
-    const button = document.getElementById('starships');
+    const button = document.getElementById('vehicles');
     button.addEventListener('click', fetchNames);
 
     return () => {
@@ -40,4 +40,4 @@ function Starships() {
   );
 }
 
-export default Starships;
+export default Vehicles;

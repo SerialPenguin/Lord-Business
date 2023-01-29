@@ -1,58 +1,43 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from 'react';
 
-class Species extends Component {
+function Species() {
+  const [names, setNames] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            species: [],
-            isLoaded: false,
-        }
+  const fetchNames = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('https://swapi.dev/api/species/');
+      const data = await response.json();
+      setNames(data.results.map(result => result.name));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    componentDidMount() {
+  useEffect(() => {
+    const button = document.getElementById('species');
+    button.addEventListener('click', fetchNames);
 
-        fetch('https://swapi.dev/api/species/')
-        .then(res => res.json())
-        .then(json => {
-            this.setState ({
-                isLoaded: true,
-                species: json,
-            })
-        })
-    }
+    return () => {
+      button.removeEventListener('click', fetchNames);
+    };
+  }, []);
 
-    render() {
-
-        let { isLoaded, species } = this.state;
-
-        if (!isLoaded) {
-            return <div>Loading...</div>
-        } else {
-            return (
-                <div className="App">
-                    {/* Data has been loaded */}
-
-                    <ul>
-                        {species.results.map(item => (
-                            <li key={item.results} className="list">
-                                Race: {item.name} | 
-                                Average height: {item.average_height} cm |
-                                Average lifespan: {item.average_lifespan} years |
-                                Classification: {item.classification}
-                            </li>
-                        ))}
-                    </ul>
-
-                    <button>Previous</button>
-                    <button>Next</button>
-
-                </div>
-            )
-        }
-    }
-
-    
+  return (
+    <div>
+      {loading ? <p>Loading...</p> : null}
+      {names.length > 0 ? (
+        <ul>
+          {names.map((name, index) => (
+            <li key={index}>{name}</li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
 }
 
 export default Species;

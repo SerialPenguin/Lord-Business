@@ -1,58 +1,43 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from 'react';
 
-class Planets extends Component {
+function Planets() {
+  const [names, setNames] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            planets: [],
-            isLoaded: false,
-        }
+  const fetchNames = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('https://swapi.dev/api/planets/');
+      const data = await response.json();
+      setNames(data.results.map(result => result.name));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    componentDidMount() {
+  useEffect(() => {
+    const button = document.getElementById('planets');
+    button.addEventListener('click', fetchNames);
 
-        fetch('https://swapi.dev/api/planets/')
-        .then(res => res.json())
-        .then(json => {
-            this.setState ({
-                isLoaded: true,
-                planets: json,
-            })
-        })
-    }
+    return () => {
+      button.removeEventListener('click', fetchNames);
+    };
+  }, []);
 
-    render() {
-
-        let { isLoaded, planets } = this.state;
-
-        if (!isLoaded) {
-            return <div>Loading...</div>
-        } else {
-            return (
-                <div className="App">
-                    {/* Data has been loaded */}
-
-                    <ul>
-                        {planets.results.map(item => (
-                            <li key={item.results} className="list">
-                                Name: {item.name} | 
-                                Rotation Time: {item.rotation_period} days |
-                                Diameter: {item.diameter} km |
-                                Climate: {item.climate}
-                            </li>
-                        ))}
-                    </ul>
-
-                    <button>Previous</button>
-                    <button>Next</button>
-
-                </div>
-            )
-        }
-    }
-
-    
+  return (
+    <div>
+      {loading ? <p>Loading...</p> : null}
+      {names.length > 0 ? (
+        <ul>
+          {names.map((name, index) => (
+            <li key={index}>{name}</li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
 }
 
 export default Planets;

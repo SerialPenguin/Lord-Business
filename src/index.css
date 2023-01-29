@@ -31,3 +31,9 @@ code {
   color: white;
   list-style: none;
 }
+
+.names {
+  display: flex;
+  flex-direction: row;
+  padding: 1%;
+}
