@@ -1,16 +1,31 @@
 // Test 1
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
-  const [selectedCharacter, setSelectedCharacter] = useState({});
+  const [selectedCharacter, setSelectedCharacter] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchCharacters = async () => {
-    const res = await fetch('https://swapi.dev/api/people/');
+  const fetchCharacters = async (page) => {
+    const res = await fetch(`https://swapi.dev/api/people/?page=${page}`);
     const data = await res.json();
     setCharacters(data.results);
+  };
+
+  const handleClick = () => {
+    fetchCharacters(currentPage);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage(currentPage - 1);
+    fetchCharacters(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1);
+    fetchCharacters(currentPage + 1);
   };
 
   const fetchCharacter = async (url) => {
@@ -20,27 +35,40 @@ const Characters = () => {
   };
 
   useEffect(() => {
-    const button = document.getElementById('characters');
-    button.addEventListener('click', fetchCharacters);
+    const button = document.getElementById("characters");
+    button.addEventListener("click", handleClick);
 
     return () => {
-      button.removeEventListener('click', fetchCharacters);
+      button.removeEventListener("click", handleClick);
     };
-  }, []);
+  });
 
   return (
-    <div>
-      
+    <div className="character-div">
+
+
+      <div>
+        {characters.length > 0 && (
+          <div>
       <ul>
         {characters.map((character) => (
           <li key={character.url} onClick={() => fetchCharacter(character.url)}>
             {character.name}
           </li>
-          
         ))}
       </ul>
+            <button onClick={handlePrev} disabled={currentPage === 1}>
+              Prev
+            </button>
+            <button onClick={handleNext} disabled={currentPage === 9}>
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+
       {selectedCharacter.name && (
-        <div>
+        <div className="character-info">
           <h3>{selectedCharacter.name}</h3>
           <p>Height: {selectedCharacter.height}</p>
           <p>Mass: {selectedCharacter.mass}</p>

@@ -41,3 +41,39 @@ function Species() {
 }
 
 export default Species;
+
+// import React, { useState, useEffect } from "react";
+
+// function Species() {
+//   const [apiData, setApiData] = useState({});
+//   const [selectedButton, setSelectedButton] = useState("planets");
+
+//   useEffect(() => {
+//     fetch(`https://swapi.dev/api/${selectedButton}`)
+//       .then(res => res.json())
+//       .then(data => {
+//         setApiData(data);
+//       });
+//   }, [selectedButton]);
+
+//   return (
+//     <div>
+//       <button onClick={() => setSelectedButton("planets")}>Planets</button>
+//       <button onClick={() => setSelectedButton("starships")}>Starships</button>
+//       <div id="api-data">
+//         {apiData.results ? (
+//           apiData.results.map((item, index) => (
+//             <div key={index}>
+//               <p>{item.name}</p>
+//               <p>{item.model}</p>
+//             </div>
+//           ))
+//         ) : (
+//           <p>Loading...</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Species;
