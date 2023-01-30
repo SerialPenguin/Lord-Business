@@ -1,3 +1,89 @@
+import React, { useState, useEffect } from "react";
+
+const Species = () => {
+  const [species, setSpecies] = useState([]);
+  const [selectedSpecies, setSelectedSpecies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const fetchSpecies = async (page) => {
+    const res = await fetch(`https://swapi.dev/api/species/?page=${page}`);
+    const data = await res.json();
+    setSpecies(data.results);
+  };
+
+  const handleClick = () => {
+    fetchSpecies(currentPage);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage(currentPage - 1);
+    fetchSpecies(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1);
+    fetchSpecies(currentPage + 1);
+  };
+
+  const fetchSpecie = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+    setSelectedSpecies(data);
+  };
+
+  useEffect(() => {
+    const button = document.getElementById("species");
+    button.addEventListener("click", handleClick);
+
+    return () => {
+      button.removeEventListener("click", handleClick);
+    };
+  });
+  return (
+    <div>
+      <div>
+        {species.length > 0 && (
+          <div>
+            <ul>
+              {species.map((specie) => (
+                <li 
+                  key={specie.url} 
+                  onClick={() => fetchSpecie(specie.url)}>
+                  {specie.name}
+                </li>
+              ))}
+            </ul>
+            <button onClick={handlePrev} disabled={currentPage === 1}>
+              Prev
+            </button>
+            <button onClick={handleNext} disabled={currentPage === 4}>
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+
+      {selectedSpecies.name && (
+        <div>
+          <h3>{selectedSpecies.name}</h3>
+          <p>Rotation Time: {selectedSpecies.classification}</p>
+          <p>Orbital Time: {selectedSpecies.designation}</p>
+          <p>Diameter: {selectedSpecies.average_height}</p>
+          <p>Climate: {selectedSpecies.skin_colors}</p>
+          <p>Gravity: {selectedSpecies.hair_colors}</p>
+          <p>Terrain: {selectedSpecies.eye_colors}</p>
+          <p>Population: {selectedSpecies.average_lifespan}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Species;
+
+
+
+/*
 import React, { useState, useEffect } from 'react';
 
 function Species() {
@@ -41,3 +127,4 @@ function Species() {
 }
 
 export default Species;
+*/
