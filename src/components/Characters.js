@@ -1,3 +1,6 @@
+// Test 1
+
+
 import React, { useState, useEffect } from 'react';
 
 const Characters = () => {
@@ -33,6 +36,7 @@ const Characters = () => {
           <li key={character.url} onClick={() => fetchCharacter(character.url)}>
             {character.name}
           </li>
+          
         ))}
       </ul>
       {selectedCharacter.name && (
@@ -54,6 +58,8 @@ const Characters = () => {
 export default Characters;
 
 
+
+// Test 2
 
 
 // import React, { useState, useEffect } from 'react';
@@ -105,5 +111,70 @@ export default Characters;
 //     </div>
 //   );
 // }
+
+// export default Characters;
+
+
+// Test 3
+
+
+
+// import { useState } from 'react';
+
+// const Characters = () => {
+//   const [data, setData] = useState({ results: [] });
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [err, setErr] = useState('');
+
+//   const handleClick = async () => {
+//     setIsLoading(true);
+
+//     // https://swapi.dev/api/people/
+
+//     try {
+//       const response = await fetch('https://swapi.dev/api/people/', {
+//         method: 'GET',
+//         headers: {
+//           Accept: 'application/json',
+//         },
+//       });
+
+//       if (!response.ok) {
+//         throw new Error(`Error! status: ${response.status}`);
+//       }
+
+//       const result = await response.json();
+
+//       console.log('result is: ', JSON.stringify(result, null, 4));
+
+//       setData(result);
+//     } catch (err) {
+//       setErr(err.message);
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
+
+//   console.log(data);
+
+//   return (
+//     <div>
+//       {err && <h2>{err}</h2>}
+
+//       <button onClick={handleClick}>Fetch data</button>
+
+//       {isLoading && <h2>Loading...</h2>}
+
+//       {data.data && data.data.map(person => {
+//         return (
+//           <div key={person.id}>
+//             <h2>{person.name}</h2>
+//             <br />
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
 
 // export default Characters;
