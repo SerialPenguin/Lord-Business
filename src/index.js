@@ -4,7 +4,7 @@ import './index.css';
 // import App from './App';
 import List from './components/Characters';
 import Header from './components/Header';
-import Planets from './components/Planets';
+import Planets from './components/planets';
 import Vehicles from './components/Vehicles';
 import Starships from './components/Starships';
 import Films from './components/Films';
