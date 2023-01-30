@@ -31,7 +31,7 @@ function Films() {
   }, []);
 
   return (
-    <div>
+    <div className="character-div" >
       <div>
         {films.length > 0 && (
           <div>
@@ -49,7 +49,7 @@ function Films() {
       </div>
 
       {selectedFilm.title && (
-        <div>
+        <div className="character-info">
           <h3>{selectedFilm.title}</h3>
           <p>Episode nr: {selectedFilm.episode_id}</p>
           <p>Director: {selectedFilm.director}</p>

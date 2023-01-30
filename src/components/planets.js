@@ -42,7 +42,7 @@ const Planets = () => {
     };
   });
   return (
-    <div>
+    <div className="character-div">
       <div>
         {planets.length > 0 && (
           <div>
@@ -66,7 +66,7 @@ const Planets = () => {
       </div>
 
       {selectedPlanet.name && (
-        <div>
+        <div className="character-info">
           <h3>{selectedPlanet.name}</h3>
           <p>Rotation Time: {selectedPlanet.rotation_period} days</p>
           <p>Orbital Time: {selectedPlanet.orbital_period} days</p>

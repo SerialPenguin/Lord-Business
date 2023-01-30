@@ -40,7 +40,7 @@ const Species = () => {
     };
   });
   return (
-    <div>
+    <div className="character-div">
       <div>
         {species.length > 0 && (
           <div>
@@ -64,7 +64,7 @@ const Species = () => {
       </div>
 
       {selectedSpecies.name && (
-        <div>
+        <div className="character-info">
           <h3>{selectedSpecies.name}</h3>
           <p>Rotation Time: {selectedSpecies.classification}</p>
           <p>Orbital Time: {selectedSpecies.designation}</p>

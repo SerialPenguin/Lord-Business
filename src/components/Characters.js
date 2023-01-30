@@ -41,7 +41,7 @@ const Characters = () => {
   });
 
   return (
-    <div>
+    <div className="character-div">
       <div>
         {characters.length > 0 && (
           <div>
@@ -65,7 +65,7 @@ const Characters = () => {
       </div>
 
       {selectedCharacter.name && (
-        <div>
+        <div className="character-info">
           <h3>{selectedCharacter.name}</h3>
           <p>Height: {selectedCharacter.height} cm</p>
           <p>Weight: {selectedCharacter.mass} kg</p>

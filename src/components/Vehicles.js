@@ -40,7 +40,7 @@ const Vehicles = () => {
     };
   });
   return (
-    <div>
+    <div className='character-div'>
       <div>
         {vehicles.length > 0 && (
           <div>
@@ -64,7 +64,7 @@ const Vehicles = () => {
       </div>
 
       {selectedVehicle.name && (
-        <div>
+        <div className='character-info'>
           <h3>{selectedVehicle.name}</h3>
           <p>Model: {selectedVehicle.model}</p>
           <p>Manufacturer: {selectedVehicle.manufacturer}</p>

@@ -52,11 +52,11 @@ button {
 .character-div {
   display: flex;
   margin-top: 5%;
+  
 }
 
 .character-info {
-  position: relative;
-  margin-left: 15%;
-  
-  
+  position: absolute;
+  margin-left: 20%;
 }
+  

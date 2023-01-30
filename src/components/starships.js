@@ -40,7 +40,7 @@ const Starships = () => {
     };
   });
   return (
-    <div>
+    <div className="character-div">
       <div>
         {starships.length > 0 && (
           <div>
@@ -64,7 +64,7 @@ const Starships = () => {
       </div>
 
       {selectedStarship.name && (
-        <div>
+        <div className="character-info">
           <h3>{selectedStarship.name}</h3>
           <p>Rotation Time: {selectedStarship.model}</p>
           <p>Orbital Time: {selectedStarship.manufacturer}</p>
