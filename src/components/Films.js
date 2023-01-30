@@ -1,41 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Films() {
   const [films, setFilms] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [selectedFilm, setSelectedFilm] = useState([]);
+  const [currentPage] = useState();
 
   const fetchFilms = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('https://swapi.dev/api/films/');
-      const data = await response.json();
-      setFilms(data.results.map(result => result.title));
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+    const res = await fetch('https://swapi.dev/api/films/');
+    const data = await res.json();
+    setFilms(data.results);
+  };
+
+  const handleClick = () => {
+    fetchFilms(currentPage);
+  };
+
+  const fetchFilm = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+    setSelectedFilm(data);
   };
 
   useEffect(() => {
-    const button = document.getElementById('films');
-    button.addEventListener('click', fetchFilms);
+    const button = document.getElementById("films");
+    button.addEventListener("click", handleClick);
 
     return () => {
-      button.removeEventListener('click', fetchFilms);
+      button.removeEventListener("click", handleClick);
     };
   }, []);
 
   return (
     <div>
-      {loading ? <p>Loading...</p> : null}
-      {films.length > 0 ? (
-        <ul>
-          {films.map((film, index) => (
-            <li key={index}>{film}</li>
-          ))}
-        </ul>
-      ) : null}
+      <div>
+        {films.length > 0 && (
+          <div>
+            <ul>
+              {films.map((film) => (
+                <li
+                  key={film.url}
+                  onClick={() => fetchFilm(film.url)}>
+                  {film.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {selectedFilm.title && (
+        <div>
+          <h3>{selectedFilm.title}</h3>
+          <p>Episode nr: {selectedFilm.episode_id}</p>
+          <p>Director: {selectedFilm.director}</p>
+          <p>Producer: {selectedFilm.producer}</p>
+          <p>Release date: {selectedFilm.release_date}</p>
+        </div>
+      )}
     </div>
   );
 }

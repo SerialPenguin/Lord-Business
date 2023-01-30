@@ -26,11 +26,6 @@ root.render(
     <Species/>
     <Vehicles/>
     <Starships/>
-    
-    
-    
-    
-    
     </React.StrictMode>
 );
 

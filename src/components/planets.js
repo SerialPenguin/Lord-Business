@@ -1,3 +1,5 @@
+// Test 2
+
 import React, { useState, useEffect } from "react";
 
 const Planets = () => {
@@ -66,9 +68,9 @@ const Planets = () => {
       {selectedPlanet.name && (
         <div>
           <h3>{selectedPlanet.name}</h3>
-          <p>Rotation Time: {selectedPlanet.rotation_period}</p>
-          <p>Orbital Time: {selectedPlanet.orbital_period}</p>
-          <p>Diameter: {selectedPlanet.diameter}</p>
+          <p>Rotation Time: {selectedPlanet.rotation_period} days</p>
+          <p>Orbital Time: {selectedPlanet.orbital_period} days</p>
+          <p>Diameter: {selectedPlanet.diameter} km</p>
           <p>Climate: {selectedPlanet.climate}</p>
           <p>Gravity: {selectedPlanet.gravity}</p>
           <p>Terrain: {selectedPlanet.terrain}</p>

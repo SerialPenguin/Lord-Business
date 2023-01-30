@@ -39,20 +39,21 @@ const Characters = () => {
       button.removeEventListener("click", handleClick);
     };
   });
+
   return (
     <div>
-
-
       <div>
         {characters.length > 0 && (
           <div>
-      <ul>
-        {characters.map((character) => (
-          <li key={character.url} onClick={() => fetchCharacter(character.url)}>
-            {character.name}
-          </li>
-        ))}
-      </ul>
+            <ul>
+              {characters.map((character) => (
+                <li
+                  key={character.url}
+                  onClick={() => fetchCharacter(character.url)}>
+                  {character.name}
+                </li>
+              ))}
+            </ul>
             <button onClick={handlePrev} disabled={currentPage === 1}>
               Prev
             </button>
@@ -66,8 +67,8 @@ const Characters = () => {
       {selectedCharacter.name && (
         <div>
           <h3>{selectedCharacter.name}</h3>
-          <p>Height: {selectedCharacter.height}</p>
-          <p>Mass: {selectedCharacter.mass}</p>
+          <p>Height: {selectedCharacter.height} cm</p>
+          <p>Weight: {selectedCharacter.mass} kg</p>
           <p>Hair Color: {selectedCharacter.hair_color}</p>
           <p>Skin Color: {selectedCharacter.skin_color}</p>
           <p>Eye Color: {selectedCharacter.eye_color}</p>
