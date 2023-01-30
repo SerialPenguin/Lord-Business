@@ -6,9 +6,9 @@ import List from './components/Characters';
 import Header from './components/Header';
 import Planets from './components/planets';
 import Vehicles from './components/Vehicles';
-import Starships from './components/Starships';
+import Starships from './components/starships';
 import Films from './components/Films';
-import Species from './components/Species';
+import Species from './components/species';
 
 // import Test from './components/test'
 // // import reportWebVitals from './reportWebVitals';
@@ -26,11 +26,6 @@ root.render(
     <Species/>
     <Vehicles/>
     <Starships/>
-    
-    
-    
-    
-    
     </React.StrictMode>
 );
 
