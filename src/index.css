@@ -47,6 +47,11 @@ button {
   color: whitesmoke;
 }
 
+/* .character-btn {
+  display: flex;
+  flex-direction: column;
+} */
+
 
 
 .character-div {

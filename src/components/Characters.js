@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Characters = () => {
+const Characters = (props) => {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,19 +41,19 @@ const Characters = () => {
   });
 
   return (
-    <div>
-      <div>
+     <div>
+     { props.state === 'characters' && <div>
         {characters.length > 0 && (
           <div>
-            <ul>
+            <div>
               {characters.map((character) => (
-                <li
+                <button className="character-btn"
                   key={character.url}
                   onClick={() => fetchCharacter(character.url)}>
                   {character.name}
-                </li>
+                </button>
               ))}
-            </ul>
+            </div>
             <button onClick={handlePrev} disabled={currentPage === 1}>
               Prev
             </button>
@@ -62,7 +62,7 @@ const Characters = () => {
             </button>
           </div>
         )}
-      </div>
+      </div> }
 
       {selectedCharacter.name && (
         <div>

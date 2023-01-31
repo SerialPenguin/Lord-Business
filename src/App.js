@@ -1,40 +1,25 @@
-// import React from "react";
-// // import Header from "./components/Header";
-// import "./App.css";
-// import List from './components/List';
-// import {useState, useEffect} from "react";
-// // import Test from './components/test';
+import React, { useState }from 'react';
+import List from './components/Characters';
+import Header from './components/Header';
+import Planets from './components/planets';
+import Vehicles from './components/Vehicles';
+import Starships from './components/starships';
+import Films from './components/Films';
+import Species from './components/species';
 
 
 
-
-// class App extends React.Component {
-
-    
-//   componentDidMount(){
-//     this.fetchData();
-//   }
-
-//   async fetchData(){
-//     const url = 'https://swapi.dev/api/people/';
-//     return fetch(url)
-//         .then(response => response.json())
-//         .then(parsedJSON => this.setState({results: parsedJSON.results}))
-//         .catch(error => console.log(error));
-        
-// }
-
-    
-
-// render() {
-//     const data =[{"name": "test1"},{"name":"test2"}];
-//     return (
-//       <div>
-//       {data.map(function(d, idx){
-//          return (<li key={idx}>{d.name}</li>)
-//        })}
-//       </div>
-//     );
-//   }
-// }
-// export default App
+export default function App() {
+    const [state, setState] = useState('');
+    return (
+    <div>
+        <Header setState = {setState}/>
+        <List state = {state}/>
+    <Planets state = {state}/>
+    <Films state = {state}/>
+    <Species state = {state}/>
+        <Vehicles state = {state}/>
+    <Starships state = {state}/>
+    </div>
+    )
+}

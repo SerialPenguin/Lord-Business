@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Species = () => {
+const Species = (props) => {
   const [species, setSpecies] = useState([]);
   const [selectedSpecies, setSelectedSpecies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,18 +41,18 @@ const Species = () => {
   });
   return (
     <div>
-      <div>
+      { props.state === 'species' && <div>
         {species.length > 0 && (
           <div>
-            <ul>
+            <div>
               {species.map((specie) => (
-                <li 
+                <button 
                   key={specie.url} 
                   onClick={() => fetchSpecie(specie.url)}>
                   {specie.name}
-                </li>
+                </button>
               ))}
-            </ul>
+            </div>
             <button onClick={handlePrev} disabled={currentPage === 1}>
               Prev
             </button>
@@ -61,7 +61,7 @@ const Species = () => {
             </button>
           </div>
         )}
-      </div>
+      </div> }
 
       {selectedSpecies.name && (
         <div>

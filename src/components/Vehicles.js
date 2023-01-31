@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Vehicles = () => {
+const Vehicles = (props) => {
   const [vehicles, setVehicles] = useState([]);
   const [selectedVehicle, setSelectedVehicle] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,18 +41,18 @@ const Vehicles = () => {
   });
   return (
     <div>
-      <div>
+      { props.state === 'vehicles' && <div>
         {vehicles.length > 0 && (
           <div>
-            <ul>
+            <div>
               {vehicles.map((vehicle) => (
-                <li
+                <button
                   key={vehicle.url}
                   onClick={() => fetchVehicle(vehicle.url)}>
                   {vehicle.name}
-                </li>
+                </button>
               ))}
-            </ul>
+            </div>
             <button onClick={handlePrev} disabled={currentPage === 1}>
               Prev
             </button>
@@ -61,7 +61,7 @@ const Vehicles = () => {
             </button>
           </div>
         )}
-      </div>
+      </div> }
 
       {selectedVehicle.name && (
         <div>

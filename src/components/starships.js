@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Starships = () => {
+const Starships = (props) => {
   const [starships, setStarships] = useState([]);
   const [selectedStarship, setSelectedStarship] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,18 +41,18 @@ const Starships = () => {
   });
   return (
     <div>
-      <div>
+      { props.state === 'starships' && <div>
         {starships.length > 0 && (
           <div>
-            <ul>
+            <div>
               {starships.map((starship) => (
-                <li 
+                <button 
                   key={starship.url} 
                   onClick={() => fetchStarship(starship.url)}>
                   {starship.name}
-                </li>
+                </button>
               ))}
-            </ul>
+            </div>
             <button onClick={handlePrev} disabled={currentPage === 1}>
               Prev
             </button>
@@ -61,7 +61,7 @@ const Starships = () => {
             </button>
           </div>
         )}
-      </div>
+      </div> }
 
       {selectedStarship.name && (
         <div>

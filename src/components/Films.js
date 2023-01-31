@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Films() {
+function Films(props) {
   const [films, setFilms] = useState([]);
   const [selectedFilm, setSelectedFilm] = useState([]);
   const [currentPage] = useState();
@@ -28,25 +28,25 @@ function Films() {
     return () => {
       button.removeEventListener("click", handleClick);
     };
-  }, []);
+  });
 
   return (
     <div>
-      <div>
+      { props.state === 'films' && <div>
         {films.length > 0 && (
           <div>
-            <ul>
+            <div>
               {films.map((film) => (
-                <li
+                <button
                   key={film.url}
                   onClick={() => fetchFilm(film.url)}>
                   {film.title}
-                </li>
+                </button>
               ))}
-            </ul>
+            </div>
           </div>
         )}
-      </div>
+      </div> }
 
       {selectedFilm.title && (
         <div>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const Planets = () => {
+const Planets = (props) => {
   const [planets, setPlanets] = useState([]);
   const [selectedPlanet, setSelectedPlanet] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,18 +43,18 @@ const Planets = () => {
   });
   return (
     <div>
-      <div>
+      { props.state === 'planets' && <div>
         {planets.length > 0 && (
           <div>
-            <ul>
+            <div>
               {planets.map((planet) => (
-                <li 
+                <button 
                   key={planet.url} 
                   onClick={() => fetchPlanet(planet.url)}>
                   {planet.name}
-                </li>
+                </button>
               ))}
-            </ul>
+            </div>
             <button onClick={handlePrev} disabled={currentPage === 1}>
               Prev
             </button>
@@ -63,7 +63,7 @@ const Planets = () => {
             </button>
           </div>
         )}
-      </div>
+      </div> }
 
       {selectedPlanet.name && (
         <div>
