@@ -64,6 +64,15 @@ export default function Header(props){
             })
             props.setState('starships') }
           }>Starships</button>
+
+<button id="search" onClick={() => {
+            fetch('https://swapi.dev/api/starships/')
+            .then(res => res.json())
+            .then(json => {
+                 console.log(json)
+            })
+            props.setState('search') }
+          }>Search</button>
             
        
         </header>

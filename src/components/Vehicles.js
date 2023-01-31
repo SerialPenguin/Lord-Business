@@ -75,7 +75,7 @@ const Vehicles = (props) => {
           <p>Cargo capacity: {selectedVehicle.cargo_capacity} ton</p>
         </div>
       )}
-    </div>
+      </div>
   );
 };
 
