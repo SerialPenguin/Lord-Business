@@ -9,7 +9,7 @@ export default function Header(props){
         <header className="page-header">
               
    
-            <button id="characters" onClick={() => {
+<button id="characters" onClick={() => {
             fetch('https://swapi.dev/api/people/')
             .then(res => res.json())
             .then(json => {

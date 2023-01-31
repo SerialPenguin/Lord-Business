@@ -63,16 +63,16 @@ const Species = (props) => {
         )}
       </div> }
 
-      {selectedSpecies.name && (
+      {props.state === 'species' && selectedSpecies.name && (
         <div>
           <h3>{selectedSpecies.name}</h3>
-          <p>Rotation Time: {selectedSpecies.classification}</p>
-          <p>Orbital Time: {selectedSpecies.designation}</p>
-          <p>Diameter: {selectedSpecies.average_height}</p>
-          <p>Climate: {selectedSpecies.skin_colors}</p>
-          <p>Gravity: {selectedSpecies.hair_colors}</p>
-          <p>Terrain: {selectedSpecies.eye_colors}</p>
-          <p>Population: {selectedSpecies.average_lifespan}</p>
+          <p>Type: {selectedSpecies.classification}</p>
+          <p>Designation: {selectedSpecies.designation}</p>
+          <p>Aberage height: {selectedSpecies.average_height} cm</p>
+          <p>Skin color(s): {selectedSpecies.skin_colors}</p>
+          <p>Hair color(s): {selectedSpecies.hair_colors}</p>
+          <p>Eye color(s): {selectedSpecies.eye_colors}</p>
+          <p>Average lifespan: {selectedSpecies.average_lifespan}</p>
         </div>
       )}
     </div>

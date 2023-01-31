@@ -42,7 +42,7 @@ const Characters = (props) => {
 
   return (
      <div>
-     { props.state === 'characters' && <div>
+        { props.state === 'characters' && <div>
         {characters.length > 0 && (
           <div>
             <div>
@@ -64,15 +64,15 @@ const Characters = (props) => {
         )}
       </div> }
 
-      {selectedCharacter.name && (
+      { props.state === 'characters' && selectedCharacter.name && (
         <div>
           <h3>{selectedCharacter.name}</h3>
           <p>Height: {selectedCharacter.height} cm</p>
           <p>Weight: {selectedCharacter.mass} kg</p>
-          <p>Hair Color: {selectedCharacter.hair_color}</p>
-          <p>Skin Color: {selectedCharacter.skin_color}</p>
-          <p>Eye Color: {selectedCharacter.eye_color}</p>
-          <p>Birth Year: {selectedCharacter.birth_year}</p>
+          <p>Hair color: {selectedCharacter.hair_color}</p>
+          <p>Skin color: {selectedCharacter.skin_color}</p>
+          <p>Eye color: {selectedCharacter.eye_color}</p>
+          <p>Birth year: {selectedCharacter.birth_year}</p>
           <p>Gender: {selectedCharacter.gender}</p>
         </div>
       )}

@@ -65,11 +65,11 @@ const Planets = (props) => {
         )}
       </div> }
 
-      {selectedPlanet.name && (
+      {props.state === 'planets' && selectedPlanet.name && (
         <div>
           <h3>{selectedPlanet.name}</h3>
-          <p>Rotation Time: {selectedPlanet.rotation_period} days</p>
-          <p>Orbital Time: {selectedPlanet.orbital_period} days</p>
+          <p>Rotation time: {selectedPlanet.rotation_period} days</p>
+          <p>Orbital time: {selectedPlanet.orbital_period} days</p>
           <p>Diameter: {selectedPlanet.diameter} km</p>
           <p>Climate: {selectedPlanet.climate}</p>
           <p>Gravity: {selectedPlanet.gravity}</p>

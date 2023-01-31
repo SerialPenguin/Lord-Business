@@ -63,16 +63,16 @@ const Vehicles = (props) => {
         )}
       </div> }
 
-      {selectedVehicle.name && (
+      {props.state === 'vehicles' && selectedVehicle.name && (
         <div>
           <h3>{selectedVehicle.name}</h3>
           <p>Model: {selectedVehicle.model}</p>
           <p>Manufacturer: {selectedVehicle.manufacturer}</p>
-          <p>Cost: {selectedVehicle.cost_in_credits}</p>
-          <p>Length: {selectedVehicle.length}</p>
+          <p>Cost: {selectedVehicle.cost_in_credits} credits</p>
+          <p>Length: {selectedVehicle.length} m</p>
           <p>Crew: {selectedVehicle.crew}</p>
           <p>Passengers: {selectedVehicle.passengers}</p>
-          <p>Cargo capacity: {selectedVehicle.cargo_capacity}</p>
+          <p>Cargo capacity: {selectedVehicle.cargo_capacity} ton</p>
         </div>
       )}
     </div>

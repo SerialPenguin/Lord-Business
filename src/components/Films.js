@@ -48,7 +48,7 @@ function Films(props) {
         )}
       </div> }
 
-      {selectedFilm.title && (
+      {props.state === 'films' && selectedFilm.title && (
         <div>
           <h3>{selectedFilm.title}</h3>
           <p>Episode nr: {selectedFilm.episode_id}</p>

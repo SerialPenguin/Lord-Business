@@ -63,16 +63,16 @@ const Starships = (props) => {
         )}
       </div> }
 
-      {selectedStarship.name && (
+      {props.state === 'starships' && selectedStarship.name && (
         <div>
           <h3>{selectedStarship.name}</h3>
-          <p>Rotation Time: {selectedStarship.model}</p>
-          <p>Orbital Time: {selectedStarship.manufacturer}</p>
-          <p>Diameter: {selectedStarship.cost_in_credits}</p>
-          <p>Climate: {selectedStarship.length}</p>
-          <p>Gravity: {selectedStarship.max_atmosphering_speed}</p>
-          <p>Terrain: {selectedStarship.crew}</p>
-          <p>Population: {selectedStarship.passengers}</p>
+          <p>Model: {selectedStarship.model}</p>
+          <p>Manufacturer: {selectedStarship.manufacturer}</p>
+          <p>Cost: {selectedStarship.cost_in_credits} credits</p>
+          <p>Length: {selectedStarship.length} m</p>
+          <p>Max athmospehere speed: {selectedStarship.max_atmosphering_speed} km/h</p>
+          <p>Crew: {selectedStarship.crew}</p>
+          <p>Passengers: {selectedStarship.passengers}</p>
         </div>
       )}
     </div>
