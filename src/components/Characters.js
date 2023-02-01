@@ -46,7 +46,7 @@ const Characters = (props) => {
         <div>
           {characters.length > 0 && (
             <div>
-              <div>
+              <div className="info-btns">
                 {characters.map((character) => (
                   <button
                     className="character-btn"
@@ -56,18 +56,21 @@ const Characters = (props) => {
                   </button>
                 ))}
               </div>
-              <button onClick={handlePrev} disabled={currentPage === 1}>
-                Prev
-              </button>
-              <button onClick={handleNext} disabled={currentPage === 9}>
-                Next
-              </button>
+              <div className="next-btn">
+                <button onClick={handlePrev} disabled={currentPage === 1}>
+                  Prev
+                </button>
+                <button onClick={handleNext} disabled={currentPage === 9}>
+                  Next
+                </button>
+              </div>
             </div>
           )}
         </div>
       )}
 
       {props.state === "characters" && selectedCharacter.name && (
+        <div className="information">
         <div>
           <h3>{selectedCharacter.name}</h3>
           <p>Height: {selectedCharacter.height} cm</p>
@@ -77,6 +80,7 @@ const Characters = (props) => {
           <p>Eye color: {selectedCharacter.eye_color}</p>
           <p>Birth year: {selectedCharacter.birth_year}</p>
           <p>Gender: {selectedCharacter.gender}</p>
+          </div>
         </div>
       )}
     </div>

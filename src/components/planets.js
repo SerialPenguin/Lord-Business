@@ -45,7 +45,7 @@ const Planets = (props) => {
         <div>
           {planets.length > 0 && (
             <div>
-              <div>
+              <div className="info-btns">
                 {planets.map((planet) => (
                   <button
                     key={planet.url}
@@ -54,18 +54,21 @@ const Planets = (props) => {
                   </button>
                 ))}
               </div>
+              <div className="next-btn">
               <button onClick={handlePrev} disabled={currentPage === 1}>
                 Prev
               </button>
               <button onClick={handleNext} disabled={currentPage === 6}>
                 Next
               </button>
+              </div>
             </div>
           )}
         </div>
       )}
 
       {props.state === "planets" && selectedPlanet.name && (
+        <div className="information">
         <div>
           <h3>{selectedPlanet.name}</h3>
           <p>Rotation time: {selectedPlanet.rotation_period} days</p>
@@ -75,6 +78,7 @@ const Planets = (props) => {
           <p>Gravity: {selectedPlanet.gravity}</p>
           <p>Terrain: {selectedPlanet.terrain}</p>
           <p>Population: {selectedPlanet.population}</p>
+          </div>
         </div>
       )}
     </div>
