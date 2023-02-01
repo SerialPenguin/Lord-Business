@@ -73,7 +73,7 @@ const Species = (props) => {
           <h3>{selectedSpecies.name}</h3>
           <p>Type: {selectedSpecies.classification}</p>
           <p>Designation: {selectedSpecies.designation}</p>
-          <p>Aberage height: {selectedSpecies.average_height} cm</p>
+          <p>Average height: {selectedSpecies.average_height} cm</p>
           <p>Skin color(s): {selectedSpecies.skin_colors}</p>
           <p>Hair color(s): {selectedSpecies.hair_colors}</p>
           <p>Eye color(s): {selectedSpecies.eye_colors}</p>
