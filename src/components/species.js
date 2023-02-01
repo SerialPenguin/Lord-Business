@@ -41,29 +41,31 @@ const Species = (props) => {
   });
   return (
     <div>
-      { props.state === 'species' && <div>
-        {species.length > 0 && (
-          <div>
+      {props.state === "species" && (
+        <div>
+          {species.length > 0 && (
             <div>
-              {species.map((specie) => (
-                <button 
-                  key={specie.url} 
-                  onClick={() => fetchSpecie(specie.url)}>
-                  {specie.name}
-                </button>
-              ))}
+              <div>
+                {species.map((specie) => (
+                  <button
+                    key={specie.url}
+                    onClick={() => fetchSpecie(specie.url)}>
+                    {specie.name}
+                  </button>
+                ))}
+              </div>
+              <button onClick={handlePrev} disabled={currentPage === 1}>
+                Prev
+              </button>
+              <button onClick={handleNext} disabled={currentPage === 4}>
+                Next
+              </button>
             </div>
-            <button onClick={handlePrev} disabled={currentPage === 1}>
-              Prev
-            </button>
-            <button onClick={handleNext} disabled={currentPage === 4}>
-              Next
-            </button>
-          </div>
-        )}
-      </div> }
+          )}
+        </div>
+      )}
 
-      {props.state === 'species' && selectedSpecies.name && (
+      {props.state === "species" && selectedSpecies.name && (
         <div>
           <h3>{selectedSpecies.name}</h3>
           <p>Type: {selectedSpecies.classification}</p>

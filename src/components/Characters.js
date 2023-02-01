@@ -41,30 +41,33 @@ const Characters = (props) => {
   });
 
   return (
-     <div>
-        { props.state === 'characters' && <div>
-        {characters.length > 0 && (
-          <div>
+    <div>
+      {props.state === "characters" && (
+        <div>
+          {characters.length > 0 && (
             <div>
-              {characters.map((character) => (
-                <button className="character-btn"
-                  key={character.url}
-                  onClick={() => fetchCharacter(character.url)}>
-                  {character.name}
-                </button>
-              ))}
+              <div>
+                {characters.map((character) => (
+                  <button
+                    className="character-btn"
+                    key={character.url}
+                    onClick={() => fetchCharacter(character.url)}>
+                    {character.name}
+                  </button>
+                ))}
+              </div>
+              <button onClick={handlePrev} disabled={currentPage === 1}>
+                Prev
+              </button>
+              <button onClick={handleNext} disabled={currentPage === 9}>
+                Next
+              </button>
             </div>
-            <button onClick={handlePrev} disabled={currentPage === 1}>
-              Prev
-            </button>
-            <button onClick={handleNext} disabled={currentPage === 9}>
-              Next
-            </button>
-          </div>
-        )}
-      </div> }
+          )}
+        </div>
+      )}
 
-      { props.state === 'characters' && selectedCharacter.name && (
+      {props.state === "characters" && selectedCharacter.name && (
         <div>
           <h3>{selectedCharacter.name}</h3>
           <p>Height: {selectedCharacter.height} cm</p>

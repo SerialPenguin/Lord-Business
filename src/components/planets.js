@@ -1,5 +1,3 @@
-// Test 2
-
 import React, { useState, useEffect } from "react";
 
 const Planets = (props) => {
@@ -43,29 +41,31 @@ const Planets = (props) => {
   });
   return (
     <div>
-      { props.state === 'planets' && <div>
-        {planets.length > 0 && (
-          <div>
+      {props.state === "planets" && (
+        <div>
+          {planets.length > 0 && (
             <div>
-              {planets.map((planet) => (
-                <button 
-                  key={planet.url} 
-                  onClick={() => fetchPlanet(planet.url)}>
-                  {planet.name}
-                </button>
-              ))}
+              <div>
+                {planets.map((planet) => (
+                  <button
+                    key={planet.url}
+                    onClick={() => fetchPlanet(planet.url)}>
+                    {planet.name}
+                  </button>
+                ))}
+              </div>
+              <button onClick={handlePrev} disabled={currentPage === 1}>
+                Prev
+              </button>
+              <button onClick={handleNext} disabled={currentPage === 6}>
+                Next
+              </button>
             </div>
-            <button onClick={handlePrev} disabled={currentPage === 1}>
-              Prev
-            </button>
-            <button onClick={handleNext} disabled={currentPage === 6}>
-              Next
-            </button>
-          </div>
-        )}
-      </div> }
+          )}
+        </div>
+      )}
 
-      {props.state === 'planets' && selectedPlanet.name && (
+      {props.state === "planets" && selectedPlanet.name && (
         <div>
           <h3>{selectedPlanet.name}</h3>
           <p>Rotation time: {selectedPlanet.rotation_period} days</p>

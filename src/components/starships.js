@@ -41,36 +41,41 @@ const Starships = (props) => {
   });
   return (
     <div>
-      { props.state === 'starships' && <div>
-        {starships.length > 0 && (
-          <div>
+      {props.state === "starships" && (
+        <div>
+          {starships.length > 0 && (
             <div>
-              {starships.map((starship) => (
-                <button 
-                  key={starship.url} 
-                  onClick={() => fetchStarship(starship.url)}>
-                  {starship.name}
-                </button>
-              ))}
+              <div>
+                {starships.map((starship) => (
+                  <button
+                    key={starship.url}
+                    onClick={() => fetchStarship(starship.url)}>
+                    {starship.name}
+                  </button>
+                ))}
+              </div>
+              <button onClick={handlePrev} disabled={currentPage === 1}>
+                Prev
+              </button>
+              <button onClick={handleNext} disabled={currentPage === 4}>
+                Next
+              </button>
             </div>
-            <button onClick={handlePrev} disabled={currentPage === 1}>
-              Prev
-            </button>
-            <button onClick={handleNext} disabled={currentPage === 4}>
-              Next
-            </button>
-          </div>
-        )}
-      </div> }
+          )}
+        </div>
+      )}
 
-      {props.state === 'starships' && selectedStarship.name && (
+      {props.state === "starships" && selectedStarship.name && (
         <div>
           <h3>{selectedStarship.name}</h3>
           <p>Model: {selectedStarship.model}</p>
           <p>Manufacturer: {selectedStarship.manufacturer}</p>
           <p>Cost: {selectedStarship.cost_in_credits} credits</p>
           <p>Length: {selectedStarship.length} m</p>
-          <p>Max athmospehere speed: {selectedStarship.max_atmosphering_speed} km/h</p>
+          <p>
+            Max athmospehere speed: {selectedStarship.max_atmosphering_speed}{" "}
+            km/h
+          </p>
           <p>Crew: {selectedStarship.crew}</p>
           <p>Passengers: {selectedStarship.passengers}</p>
         </div>

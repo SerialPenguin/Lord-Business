@@ -6,7 +6,7 @@ function Films(props) {
   const [currentPage] = useState();
 
   const fetchFilms = async () => {
-    const res = await fetch('https://swapi.dev/api/films/');
+    const res = await fetch("https://swapi.dev/api/films/");
     const data = await res.json();
     setFilms(data.results);
   };
@@ -32,23 +32,23 @@ function Films(props) {
 
   return (
     <div>
-      { props.state === 'films' && <div>
-        {films.length > 0 && (
-          <div>
+      {props.state === "films" && (
+        <div>
+          {films.length > 0 && (
             <div>
-              {films.map((film) => (
-                <button
-                  key={film.url}
-                  onClick={() => fetchFilm(film.url)}>
-                  {film.title}
-                </button>
-              ))}
+              <div>
+                {films.map((film) => (
+                  <button key={film.url} onClick={() => fetchFilm(film.url)}>
+                    {film.title}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
-      </div> }
+          )}
+        </div>
+      )}
 
-      {props.state === 'films' && selectedFilm.title && (
+      {props.state === "films" && selectedFilm.title && (
         <div>
           <h3>{selectedFilm.title}</h3>
           <p>Episode nr: {selectedFilm.episode_id}</p>
