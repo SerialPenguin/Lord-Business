@@ -6,7 +6,6 @@ import Vehicles from './components/Vehicles';
 import Starships from './components/starships';
 import Films from './components/Films';
 import Species from './components/species';
-import Search from './components/search';
 
 
 
@@ -21,7 +20,6 @@ export default function App() {
         <Species state = {state}/>
         <Vehicles state = {state}/>
         <Starships state = {state}/>
-        <Search state = {state}/>
     </div>
     )
 }

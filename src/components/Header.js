@@ -2,79 +2,66 @@ import React from "react";
 import "../index.css";
 // import List from './components/list';
 
-
 export default function Header(props){
+
     return (
    
         <header className="page-header">
               
-   
-<button id="characters" onClick={() => {
+<button id="characters" className="characterss-btn" onClick={() => {
             fetch('https://swapi.dev/api/people/')
             .then(res => res.json())
             .then(json => {
                 console.log(json)
             })
-            console.log('hejhej');
              props.setState('characters') }
-            }>Characters</button>
+            }></button>
 
-<button id="planets" onClick={() => {
+<button id="planets" className="planetss-btn" onClick={() => {
             fetch('https://swapi.dev/api/planets/')
             .then(res => res.json())
             .then(json => {
-                 console.log(json)
-                 
+                 console.log(json)   
             })
             props.setState('planets') }}
-            >Planets</button>
+            ></button>
 
-<button id="films" onClick={() => {
+<button id="films" className="moviess-btn" onClick={() => {
             fetch('https://swapi.dev/api/films/')
             .then(res => res.json())
             .then(json => {
                  console.log(json)
             })
             props.setState('films') }
-          }>Films</button>
+          }></button>
 
-<button id="species" onClick={() => {
+<button id="species" className="speciess-btn" onClick={() => {
             fetch('https://swapi.dev/api/species/')
             .then(res => res.json())
             .then(json => {
                  console.log(json)
             })
             props.setState('species') }
-          }>Species</button>
+          }></button>
 
-<button id="vehicles" onClick={() => {
+<button id="vehicles" className="vehicless-btn" onClick={() => {
             fetch('https://swapi.dev/api/vehicles/')
             .then(res => res.json())
             .then(json => {
                  console.log(json)
             })
             props.setState('vehicles') }
-          }>Vehicles</button>
+          }></button>
 
-<button id="starships" onClick={() => {
+<button id="starships" className="starshipss-btn" onClick={() => {
             fetch('https://swapi.dev/api/starships/')
             .then(res => res.json())
             .then(json => {
                  console.log(json)
             })
             props.setState('starships') }
-          }>Starships</button>
+          }></button>
 
-<button id="search" onClick={() => {
-            fetch('https://swapi.dev/api/starships/')
-            .then(res => res.json())
-            .then(json => {
-                 console.log(json)
-            })
-            props.setState('search') }
-          }>Search</button>
-            
-       
         </header>
         
        

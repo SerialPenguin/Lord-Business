@@ -47,12 +47,78 @@ button {
   color: whitesmoke;
 }
 
-/* .character-btn {
-  display: flex;
-  flex-direction: column;
-} */
+.characterss-btn {
+  background: url('../public/assets/characters-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
 
+.characterss-btn:hover {
+  opacity: 0.8;
+}
 
+.planetss-btn {
+  background: url('../public/assets/planets-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.planetss-btn:hover {
+  opacity: 0.8;
+}
+
+.moviess-btn {
+  background: url('../public/assets/films-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.moviess-btn:hover {
+  opacity: 0.8;
+}
+
+.speciess-btn {
+  background: url('../public/assets/species-btn.png');
+  background-position:center;
+  object-fit: fill;
+  width: 230px;
+  height: 75px;
+}
+
+.speciess-btn:hover {
+  opacity: 0.8;
+}
+
+.vehicless-btn {
+  background: url('../public/assets/vehicles-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.vehicless-btn:hover {
+  opacity: 0.8;
+  
+}
+
+.starshipss-btn {
+  background: url('../public/assets/starships-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.starshipss-btn:hover {
+  opacity: 0.8;
+}
 
 .character-div {
   display: flex;
@@ -62,6 +128,4 @@ button {
 .character-info {
   position: relative;
   margin-left: 15%;
-  
-  
 }
