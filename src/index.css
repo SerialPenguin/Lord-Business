@@ -55,6 +55,14 @@ button {
   font-size: 20px;
   background-color: black;
   color: whitesmoke;
+  border: 1px solid white;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  opacity: 0.8;
 }
 
 .info-btns {
