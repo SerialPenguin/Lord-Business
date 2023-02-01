@@ -77,7 +77,7 @@ const Species = (props) => {
           <p>Skin color(s): {selectedSpecies.skin_colors}</p>
           <p>Hair color(s): {selectedSpecies.hair_colors}</p>
           <p>Eye color(s): {selectedSpecies.eye_colors}</p>
-          <p>Average lifespan: {selectedSpecies.average_lifespan}</p>
+          <p>Average lifespan: {selectedSpecies.average_lifespan} years</p>
           </div>
         </div>
       )}
