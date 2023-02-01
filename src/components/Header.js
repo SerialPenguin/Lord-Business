@@ -4,6 +4,7 @@ import "../index.css";
 export default function Header(props) {
   return (
     <header className="page-header">
+
       <button
         id="characters"
         className="characterss-btn"
