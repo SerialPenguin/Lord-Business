@@ -1,11 +1,11 @@
 import React, { useState }from 'react';
 import Characters from './components/Characters';
 import Header from './components/Header';
-import Planets from './components/planets';
+import Planets from './components/Planets';
 import Vehicles from './components/Vehicles';
-import Starships from './components/starships';
+import Starships from './components/Starships';
 import Films from './components/Films';
-import Species from './components/species';
+import Species from './components/Species';
 
 
 //import all the components
