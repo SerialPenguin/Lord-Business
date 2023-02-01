@@ -51,7 +51,7 @@ const Vehicles = (props) => {
         <div>
           {vehicles.length > 0 && (
             <div>
-              <div>
+              <div className="info-btns">
                 {vehicles.map((vehicle) => (
                   <button
                     key={vehicle.url}
@@ -60,28 +60,31 @@ const Vehicles = (props) => {
                   </button>
                 ))}
               </div>
-
+              <div className="next-btn">
               <button onClick={handlePrev} disabled={currentPage === 1}>
                 Prev
               </button>
               <button onClick={handleNext} disabled={currentPage === 4}>
                 Next
               </button>
+              </div>
             </div>
           )}
         </div>
       )}
 
       {props.state === "vehicles" && selectedVehicle.name && (
-        <div>
-          <h3>{selectedVehicle.name}</h3>
-          <p>Model: {selectedVehicle.model}</p>
-          <p>Manufacturer: {selectedVehicle.manufacturer}</p>
-          <p>Cost: {selectedVehicle.cost_in_credits} credits</p>
-          <p>Length: {selectedVehicle.length} m</p>
-          <p>Crew: {selectedVehicle.crew}</p>
-          <p>Passengers: {selectedVehicle.passengers}</p>
-          <p>Cargo capacity: {selectedVehicle.cargo_capacity} ton</p>
+        <div className="information">
+          <div>
+            <h3>{selectedVehicle.name}</h3>
+            <p>Model: {selectedVehicle.model}</p>
+            <p>Manufacturer: {selectedVehicle.manufacturer}</p>
+            <p>Cost: {selectedVehicle.cost_in_credits} credits</p>
+            <p>Length: {selectedVehicle.length} m</p>
+            <p>Crew: {selectedVehicle.crew}</p>
+            <p>Passengers: {selectedVehicle.passengers}</p>
+            <p>Cargo capacity: {selectedVehicle.cargo_capacity} ton</p>
+          </div>
         </div>
       )}
     </div>

@@ -36,7 +36,7 @@ function Films(props) {
         <div>
           {films.length > 0 && (
             <div>
-              <div>
+              <div className="info-btns">
                 {films.map((film) => (
                   <button key={film.url} onClick={() => fetchFilm(film.url)}>
                     {film.title}
@@ -49,12 +49,14 @@ function Films(props) {
       )}
 
       {props.state === "films" && selectedFilm.title && (
+        <div className="information">
         <div>
           <h3>{selectedFilm.title}</h3>
           <p>Episode nr: {selectedFilm.episode_id}</p>
           <p>Director: {selectedFilm.director}</p>
           <p>Producer: {selectedFilm.producer}</p>
           <p>Release date: {selectedFilm.release_date}</p>
+          </div>
         </div>
       )}
     </div>

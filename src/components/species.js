@@ -45,7 +45,7 @@ const Species = (props) => {
         <div>
           {species.length > 0 && (
             <div>
-              <div>
+              <div className="info-btns">
                 {species.map((specie) => (
                   <button
                     key={specie.url}
@@ -54,18 +54,21 @@ const Species = (props) => {
                   </button>
                 ))}
               </div>
+              <div className="next-btn">
               <button onClick={handlePrev} disabled={currentPage === 1}>
                 Prev
               </button>
               <button onClick={handleNext} disabled={currentPage === 4}>
                 Next
               </button>
+              </div>
             </div>
           )}
         </div>
       )}
 
       {props.state === "species" && selectedSpecies.name && (
+        <div className="information">
         <div>
           <h3>{selectedSpecies.name}</h3>
           <p>Type: {selectedSpecies.classification}</p>
@@ -75,6 +78,7 @@ const Species = (props) => {
           <p>Hair color(s): {selectedSpecies.hair_colors}</p>
           <p>Eye color(s): {selectedSpecies.eye_colors}</p>
           <p>Average lifespan: {selectedSpecies.average_lifespan}</p>
+          </div>
         </div>
       )}
     </div>

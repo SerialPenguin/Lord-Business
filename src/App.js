@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import List from './components/Characters';
+import Characters from './components/Characters';
 import Header from './components/Header';
 import Planets from './components/Planets';
 import Vehicles from './components/Vehicles';
@@ -15,7 +15,7 @@ export default function App() {
     return (
     <div>
         <Header setState = {setState}/>
-        <List state = {state}/>
+        <Characters state = {state}/>
         <Planets state = {state}/>
         <Films state = {state}/>
         <Species state = {state}/>
