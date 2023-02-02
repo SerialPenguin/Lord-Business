@@ -71,8 +71,10 @@ const Species = (props) => {
   });
   return (
     <div>
-      <input placeholder="Search For Species..." type="text" onKeyDown={handleKeyDown} />
-      {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+      {props.state === "species" && (
+        <div>
+          <input placeholder="Search For Species..." type="text" onKeyDown={handleKeyDown} />
+          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
           <p>Classification: {searchedItem[0].classification}</p>
           <p>Designation: {searchedItem[0].designation}</p>
           <p>Average height: {searchedItem[0].average_height} cm</p>
@@ -81,8 +83,6 @@ const Species = (props) => {
           <p>Eye colors: {searchedItem[0].eye_colors}</p>
           <p>Average lifespan: {searchedItem[0].average_lifespan} years</p></div></div> : null} 
           {noFound && <p>nothing found</p>}
-      {props.state === "species" && (
-        <div>
           {species.length > 0 && (
             <div>
               <div className="info-btns">

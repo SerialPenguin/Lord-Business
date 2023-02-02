@@ -33,10 +33,6 @@ function Films(props) {
     }
   };
 
-
-
-  //
-
   const fetchFilms = async () => {
     const res = await fetch("https://swapi.dev/api/films/");
     const data = await res.json();
@@ -64,19 +60,16 @@ function Films(props) {
 
   return (
     <div>
-
-<input placeholder="Search For Film..." type="text" onKeyDown={handleKeyDown} />
-     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].title)}</h3> 
+      {props.state === "films" && (
+        <div>
+          <input placeholder="Search For Film..." type="text" onKeyDown={handleKeyDown} />
+          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].title)}</h3> 
           <p>Episode nr: {searchedItem[0].episode_id}</p>
           <p>Director: {searchedItem[0].director}</p>
           <p>Producer: {searchedItem[0].producer}</p>
           <p>Release date: {searchedItem[0].release_date}</p>
          </div></div> : null} 
           {noFound && <p>nothing found</p>}
-
-
-      {props.state === "films" && (
-        <div>
           {films.length > 0 && (
             <div>
               <div className="info-btns">

@@ -77,9 +77,11 @@ const Vehicles = (props) => {
 
   return (
     <div>
-      <input placeholder="Search For Vehicles..." type="text" onKeyDown={handleKeyDown} />
-     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
-     <p>Model: {searchedItem[0].model}</p>
+      {props.state === "vehicles" && (
+        <div>
+            <input placeholder="Search For Vehicles..." type="text" onKeyDown={handleKeyDown} />
+            {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+            <p>Model: {searchedItem[0].model}</p>
             <p>Manufacturer: {searchedItem[0].manufacturer}</p>
             <p>Cost: {searchedItem[0].cost_in_credits} credits</p>
             <p>Length: {searchedItem[0].length} m</p>
@@ -87,8 +89,6 @@ const Vehicles = (props) => {
             <p>Passengers: {searchedItem[0].passengers}</p>
             <p>Cargo capacity: {searchedItem[0].cargo_capacity} ton</p></div></div> : null} 
           {noFound && <p>nothing found</p>}
-      {props.state === "vehicles" && (
-        <div>
           {vehicles.length > 0 && (
             <div>
               <div className="info-btns">

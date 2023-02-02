@@ -27,7 +27,6 @@ const Characters = (props) => {
     };
 
     if (inputValue !== '') {
-      props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
@@ -81,8 +80,10 @@ const Characters = (props) => {
 
   return (
     <div>
-     <input placeholder="Search For Char..." type="text" onKeyDown={handleKeyDown} />
-     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+      {props.state === "characters" && (
+        <div>
+          <input className="input-search" placeholder="Search For Character" type="text" onKeyDown={handleKeyDown} />
+          {searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
           <p>Height: {searchedItem[0].height} cm</p>
           <p>Weight: {searchedItem[0].mass} kg</p>
           <p>Hair color: {searchedItem[0].hair_color}</p>
@@ -91,9 +92,6 @@ const Characters = (props) => {
           <p>Birth year: {searchedItem[0].birth_year}</p>
           <p>Gender: {searchedItem[0].gender}</p></div></div> : null} 
           {noFound && <p>nothing found</p>}
-
-      {props.state === "characters" && (
-        <div>
           {characters.length > 0 && (
             <div>
               <div className="info-btns">

@@ -70,9 +70,10 @@ const Starships = (props) => {
   });
   return (
     <div>
-
-<input placeholder="Search For Starship..." type="text" onKeyDown={handleKeyDown} />
-     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+      {props.state === "starships" && (
+        <div>
+          <input placeholder="Search For Starship..." type="text" onKeyDown={handleKeyDown} />
+          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
           <p>Model: {searchedItem[0].model}</p>
           <p>Manufacturer: {searchedItem[0].manufacturer}</p>
           <p>Cost in credits: {searchedItem[0].cost_in_credits}</p>
@@ -81,8 +82,6 @@ const Starships = (props) => {
           <p>Crew: {searchedItem[0].crew}</p>
           <p>Passangers: {searchedItem[0].passengers}</p></div></div> : null} 
           {noFound && <p>nothing found</p>}
-      {props.state === "starships" && (
-        <div>
           {starships.length > 0 && (
             <div>
               <div className="info-btns">

@@ -70,9 +70,11 @@ const Planets = (props) => {
   });
   return (
     <div>
-       <input placeholder="Search For Planet..." type="text" onKeyDown={handleKeyDown} />
-     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
-     <p>Rotation time: {searchedItem[0].rotation_period} days</p>
+      {props.state === "planets" && (
+        <div>
+          <input placeholder="Search For Planet..." type="text" onKeyDown={handleKeyDown} />
+          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <p>Rotation time: {searchedItem[0].rotation_period} days</p>
           <p>Orbital time: {searchedItem[0].orbital_period} days</p>
           <p>Diameter: {searchedItem[0].diameter} km</p>
           <p>Climate: {searchedItem[0].climate}</p>
@@ -81,10 +83,6 @@ const Planets = (props) => {
           <p>Population: {searchedItem[0].population}</p>
           </div></div> : null} 
           {noFound && <p>nothing found</p>}
-
-
-      {props.state === "planets" && (
-        <div>
           {planets.length > 0 && (
             <div>
               <div className="info-btns">
