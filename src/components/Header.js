@@ -6,7 +6,7 @@ export default function Header(props) {
     <header className="page-header">
 
      <img src="../assets/Rubrik.png" alt="Star-wars" className="header-img"></img>
-
+    
      <div className="btn-container">
 
           <button

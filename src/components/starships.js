@@ -4,6 +4,35 @@ const Starships = (props) => {
   const [starships, setStarships] = useState([]);
   const [selectedStarship, setSelectedStarship] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputValue, setInputValue] = useState('');
+  const [searchedItem, setSearchedItem] = useState(null);
+  const [noFound,setNoFound] = useState(false)
+
+  useEffect(() => {
+    const fetchSearch = async () => {
+      const response = await fetch(`https://swapi.dev/api/starships/?search=${inputValue}`);
+      const data = await response.json();
+      if(data.results.length > 0){
+      setSearchedItem(data.results)}
+      else{setSearchedItem(null); setNoFound(true)}
+    };
+
+    if (inputValue !== '') {
+      props.setState('search')
+      setNoFound(false)
+      fetchSearch();
+    }
+  }, [inputValue]);
+
+  const handleKeyDown = (event) => {
+   
+    if (event.key === 'Enter') {
+      setInputValue(event.target.value);
+      
+    }
+  };
+
+  //
 
   const fetchStarships = async (page) => {
     const res = await fetch(`https://swapi.dev/api/starships/?page=${page}`);
@@ -41,6 +70,17 @@ const Starships = (props) => {
   });
   return (
     <div>
+
+<input placeholder="Search For Starship..." type="text" onKeyDown={handleKeyDown} />
+     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <p>Model: {searchedItem[0].model}</p>
+          <p>Manufacturer: {searchedItem[0].manufacturer}</p>
+          <p>Cost in credits: {searchedItem[0].cost_in_credits}</p>
+          <p>Length: {searchedItem[0].length} m</p>
+          <p>Max atmosphering speed: {searchedItem[0].max_atmosphering_speed} km/h</p>
+          <p>Crew: {searchedItem[0].crew}</p>
+          <p>Passangers: {searchedItem[0].passengers}</p></div></div> : null} 
+          {noFound && <p>nothing found</p>}
       {props.state === "starships" && (
         <div>
           {starships.length > 0 && (

@@ -6,6 +6,36 @@ const Vehicles = (props) => {
   const [vehicles, setVehicles] = useState([]);
   const [selectedVehicle, setSelectedVehicle] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputValue, setInputValue] = useState('');
+  const [searchedItem, setSearchedItem] = useState(null);
+  const [noFound,setNoFound] = useState(false)
+
+  useEffect(() => {
+    const fetchSearch = async () => {
+      const response = await fetch(`https://swapi.dev/api/vehicles/?search=${inputValue}`);
+      const data = await response.json();
+      if(data.results.length > 0){
+      setSearchedItem(data.results)}
+      else{setSearchedItem(null); setNoFound(true)}
+    };
+
+    if (inputValue !== '') {
+      props.setState('search')
+      setNoFound(false)
+      fetchSearch();
+    }
+  }, [inputValue]);
+
+  const handleKeyDown = (event) => {
+   
+    if (event.key === 'Enter') {
+      setInputValue(event.target.value);
+      
+    }
+  };
+
+
+
   //a function to fetch and store data in state from API with different page numbers
   const fetchVehicles = async (page) => {
     const res = await fetch(`https://swapi.dev/api/vehicles/?page=${page}`);
@@ -47,6 +77,16 @@ const Vehicles = (props) => {
 
   return (
     <div>
+      <input placeholder="Search For Vehicles..." type="text" onKeyDown={handleKeyDown} />
+     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+     <p>Model: {searchedItem[0].model}</p>
+            <p>Manufacturer: {searchedItem[0].manufacturer}</p>
+            <p>Cost: {searchedItem[0].cost_in_credits} credits</p>
+            <p>Length: {searchedItem[0].length} m</p>
+            <p>Crew: {searchedItem[0].crew}</p>
+            <p>Passengers: {searchedItem[0].passengers}</p>
+            <p>Cargo capacity: {searchedItem[0].cargo_capacity} ton</p></div></div> : null} 
+          {noFound && <p>nothing found</p>}
       {props.state === "vehicles" && (
         <div>
           {vehicles.length > 0 && (

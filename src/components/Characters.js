@@ -4,14 +4,53 @@ const Characters = (props) => {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputValue, setInputValue] = useState('');
+  const [searchedItem, setSearchedItem] = useState(null);
+  const [noFound,setNoFound] = useState(false)
 
+/*  const fetchSearch = async (query) => {
+    const res = await fetch (` https://swapi.dev/api/people/?search=${query}`);
+    const data = await res.json();
+    setSearchedItem(data.resluts.name)
+   
+
+  }*/
+
+
+  useEffect(() => {
+    const fetchSearch = async () => {
+      const response = await fetch(`https://swapi.dev/api/people/?search=${inputValue}`);
+      const data = await response.json();
+      if(data.results.length > 0){
+      setSearchedItem(data.results)}
+      else{setSearchedItem(null); setNoFound(true)}
+    };
+
+    if (inputValue !== '') {
+      props.setState('search')
+      setNoFound(false)
+      fetchSearch();
+    }
+  }, [inputValue]);
+
+  const handleKeyDown = (event) => {
+   
+    if (event.key === 'Enter') {
+      setInputValue(event.target.value);
+      
+    }
+  };
+
+  //
   const fetchCharacters = async (page) => {
     const res = await fetch(`https://swapi.dev/api/people/?page=${page}`);
     const data = await res.json();
     setCharacters(data.results);
   };
 
+
   const handleClick = () => {
+
     fetchCharacters(currentPage);
   };
 
@@ -42,6 +81,17 @@ const Characters = (props) => {
 
   return (
     <div>
+     <input placeholder="Search For Char..." type="text" onKeyDown={handleKeyDown} />
+     {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <p>Height: {searchedItem[0].height} cm</p>
+          <p>Weight: {searchedItem[0].mass} kg</p>
+          <p>Hair color: {searchedItem[0].hair_color}</p>
+          <p>Skin color: {searchedItem[0].skin_color}</p>
+          <p>Eye color: {searchedItem[0].eye_color}</p>
+          <p>Birth year: {searchedItem[0].birth_year}</p>
+          <p>Gender: {searchedItem[0].gender}</p></div></div> : null} 
+          {noFound && <p>nothing found</p>}
+
       {props.state === "characters" && (
         <div>
           {characters.length > 0 && (

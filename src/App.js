@@ -15,12 +15,12 @@ export default function App() {
     return (
     <div>
         <Header setState = {setState}/>
-        <Characters state = {state}/>
-        <Planets state = {state}/>
-        <Films state = {state}/>
-        <Species state = {state}/>
-        <Vehicles state = {state}/>
-        <Starships state = {state}/>
+        <Characters state = {state} setState = {setState}/>
+        <Planets state = {state} setState = {setState}/>
+        <Films state = {state} setState = {setState}/>
+        <Species state = {state} setState = {setState}/>
+        <Vehicles state = {state} setState = {setState}/>
+        <Starships state = {state} setState = {setState}/>
     </div>
     )
 }
