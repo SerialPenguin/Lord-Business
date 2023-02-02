@@ -6,16 +6,7 @@ const Characters = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [inputValue, setInputValue] = useState('');
   const [searchedItem, setSearchedItem] = useState(null);
-  const [noFound,setNoFound] = useState(false)
-
-/*  const fetchSearch = async (query) => {
-    const res = await fetch (` https://swapi.dev/api/people/?search=${query}`);
-    const data = await res.json();
-    setSearchedItem(data.resluts.name)
-   
-
-  }*/
-
+  const [noFound, setNoFound] = useState(false)
 
   useEffect(() => {
     const fetchSearch = async () => {
@@ -27,29 +18,25 @@ const Characters = (props) => {
     };
 
     if (inputValue !== '') {
+      // props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
   }, [inputValue]);
 
   const handleKeyDown = (event) => {
-   
     if (event.key === 'Enter') {
       setInputValue(event.target.value);
-      
     }
   };
 
-  //
   const fetchCharacters = async (page) => {
     const res = await fetch(`https://swapi.dev/api/people/?page=${page}`);
     const data = await res.json();
     setCharacters(data.results);
   };
 
-
   const handleClick = () => {
-
     fetchCharacters(currentPage);
   };
 
@@ -82,17 +69,35 @@ const Characters = (props) => {
     <div>
       {props.state === "characters" && (
         <div>
-          <input className="input-search" placeholder="Search For Character" type="text" onKeyDown={handleKeyDown} />
-          {searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
-          <p>Height: {searchedItem[0].height} cm</p>
-          <p>Weight: {searchedItem[0].mass} kg</p>
-          <p>Hair color: {searchedItem[0].hair_color}</p>
-          <p>Skin color: {searchedItem[0].skin_color}</p>
-          <p>Eye color: {searchedItem[0].eye_color}</p>
-          <p>Birth year: {searchedItem[0].birth_year}</p>
-          <p>Gender: {searchedItem[0].gender}</p></div></div> : null} 
-          {noFound && <p>nothing found</p>}
-          {characters.length > 0 && (
+          <div className="input-search">
+            <input className="input-search-field" placeholder="Search For Character..." type="text" onKeyDown={handleKeyDown} />
+          </div>
+          {props.state === "characters" && selectedCharacter.name && (
+        <div className="information">
+            <div>
+              <h3>{selectedCharacter.name}</h3>
+              <p>Height: {selectedCharacter.height} cm</p>
+              <p>Weight: {selectedCharacter.mass} kg</p>
+              <p>Hair color: {selectedCharacter.hair_color}</p>
+              <p>Skin color: {selectedCharacter.skin_color}</p>
+              <p>Eye color: {selectedCharacter.eye_color}</p>
+              <p>Birth year: {selectedCharacter.birth_year}</p>
+              <p>Gender: {selectedCharacter.gender}</p>
+            </div>
+        </div>
+      )}
+              {props.state === 'characters' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+              <p>Height: {searchedItem[0].height} cm</p>
+              <p>Weight: {searchedItem[0].mass} kg</p>
+              <p>Hair color: {searchedItem[0].hair_color}</p>
+              <p>Skin color: {searchedItem[0].skin_color}</p>
+              <p>Eye color: {searchedItem[0].eye_color}</p>
+              <p>Birth year: {searchedItem[0].birth_year}</p>
+              <p>Gender: {searchedItem[0].gender}</p>
+              </div></div> : null} 
+              {noFound && <div className="bad-search"><p>Your search didn't match anything in the database, please try again...</p></div>}
+              {characters.length > 0 && (
+            
             <div>
               <div className="info-btns">
                 {characters.map((character) => (
@@ -109,26 +114,11 @@ const Characters = (props) => {
                   Prev
                 </button>
                 <button onClick={handleNext} disabled={currentPage === 9}>
-                  Next
-                </button>
+                Next
+              </button>
               </div>
             </div>
           )}
-        </div>
-      )}
-
-      {props.state === "characters" && selectedCharacter.name && (
-        <div className="information">
-        <div>
-          <h3>{selectedCharacter.name}</h3>
-          <p>Height: {selectedCharacter.height} cm</p>
-          <p>Weight: {selectedCharacter.mass} kg</p>
-          <p>Hair color: {selectedCharacter.hair_color}</p>
-          <p>Skin color: {selectedCharacter.skin_color}</p>
-          <p>Eye color: {selectedCharacter.eye_color}</p>
-          <p>Birth year: {selectedCharacter.birth_year}</p>
-          <p>Gender: {selectedCharacter.gender}</p>
-          </div>
         </div>
       )}
     </div>

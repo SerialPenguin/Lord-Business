@@ -8,9 +8,6 @@ const Planets = (props) => {
   const [searchedItem, setSearchedItem] = useState(null);
   const [noFound,setNoFound] = useState(false)
 
-
-
-
   useEffect(() => {
     const fetchSearch = async () => {
       const response = await fetch(`https://swapi.dev/api/planets/?search=${inputValue}`);
@@ -21,7 +18,7 @@ const Planets = (props) => {
     };
 
     if (inputValue !== '') {
-      props.setState('search')
+      // props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
@@ -30,10 +27,9 @@ const Planets = (props) => {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       setInputValue(event.target.value);
-      
     }
   };
-//
+
   const fetchPlanets = async (page) => {
     const res = await fetch(`https://swapi.dev/api/planets/?page=${page}`);
     const data = await res.json();
@@ -68,12 +64,29 @@ const Planets = (props) => {
       button.removeEventListener("click", handleClick);
     };
   });
+  
   return (
     <div>
       {props.state === "planets" && (
         <div>
-          <input placeholder="Search For Planet..." type="text" onKeyDown={handleKeyDown} />
-          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <div className="input-search">
+            <input className="input-search-field" placeholder="Search For Planet..." type="text" onKeyDown={handleKeyDown} />
+          </div>
+          {props.state === "planets" && selectedPlanet.name && (
+        <div className="information">
+          <div>
+          <h3>{selectedPlanet.name}</h3>
+          <p>Rotation time: {selectedPlanet.rotation_period} days</p>
+          <p>Orbital time: {selectedPlanet.orbital_period} days</p>
+          <p>Diameter: {selectedPlanet.diameter} km</p>
+          <p>Climate: {selectedPlanet.climate}</p>
+          <p>Gravity: {selectedPlanet.gravity}</p>
+          <p>Terrain: {selectedPlanet.terrain}</p>
+          <p>Population: {selectedPlanet.population}</p>
+          </div>
+        </div>
+      )}
+          {props.state === 'planets' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
           <p>Rotation time: {searchedItem[0].rotation_period} days</p>
           <p>Orbital time: {searchedItem[0].orbital_period} days</p>
           <p>Diameter: {searchedItem[0].diameter} km</p>
@@ -82,9 +95,10 @@ const Planets = (props) => {
           <p>Terrain: {searchedItem[0].terrain}</p>
           <p>Population: {searchedItem[0].population}</p>
           </div></div> : null} 
-          {noFound && <p>nothing found</p>}
+          {noFound && <div className="bad-search"><p>Your search didn't match anything in the database, please try again...</p></div>} 
           {planets.length > 0 && (
             <div>
+
               <div className="info-btns">
                 {planets.map((planet) => (
                   <button
@@ -104,21 +118,6 @@ const Planets = (props) => {
               </div>
             </div>
           )}
-        </div>
-      )}
-
-      {props.state === "planets" && selectedPlanet.name && (
-        <div className="information">
-        <div>
-          <h3>{selectedPlanet.name}</h3>
-          <p>Rotation time: {selectedPlanet.rotation_period} days</p>
-          <p>Orbital time: {selectedPlanet.orbital_period} days</p>
-          <p>Diameter: {selectedPlanet.diameter} km</p>
-          <p>Climate: {selectedPlanet.climate}</p>
-          <p>Gravity: {selectedPlanet.gravity}</p>
-          <p>Terrain: {selectedPlanet.terrain}</p>
-          <p>Population: {selectedPlanet.population}</p>
-          </div>
         </div>
       )}
     </div>
