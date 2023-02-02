@@ -15,8 +15,7 @@ body {
 
 
   background-image: url("../public/assets/StarWarsDarth.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
   font-size: 20px;
   
  color: white;
@@ -29,7 +28,7 @@ code {
 }
 
 .list {
-  color: white;
+  color: rgb(255, 255, 255);
   list-style: none;
 }
 
@@ -39,15 +38,126 @@ code {
   padding: 1%;
 }
 
+.header-img {
+  display: flex;
+  width: 100%;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 button {
   margin: 0.5%;
   border-radius: 10%;
   font-size: 20px;
   background-color: black;
   color: whitesmoke;
+  border: 1px solid white;
 }
 
+button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  opacity: 0.8;
+}
 
+.info-btns {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.information {
+background-color: rgb(0, 0, 0);
+display: flex;
+justify-content: center;
+border: 2px solid white;
+border-radius: 10px;
+width: 50%;
+margin-inline-start: 25%;
+}
+
+.next-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.characterss-btn {
+  background: url('../public/assets/characters-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.characterss-btn:hover {
+  opacity: 0.8;
+}
+
+.planetss-btn {
+  background: url('../public/assets/planets-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.planetss-btn:hover {
+  opacity: 0.8;
+}
+
+.moviess-btn {
+  background: url('../public/assets/films-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.moviess-btn:hover {
+  opacity: 0.8;
+}
+
+.speciess-btn {
+  background: url('../public/assets/species-btn.png');
+  background-position:center;
+  object-fit: fill;
+  width: 230px;
+  height: 75px;
+}
+
+.speciess-btn:hover {
+  opacity: 0.8;
+}
+
+.vehicless-btn {
+  background: url('../public/assets/vehicles-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.vehicless-btn:hover {
+  opacity: 0.8;
+  
+}
+
+.starshipss-btn {
+  background: url('../public/assets/starships-btn.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  width: 230px;
+  height: 75px;
+}
+
+.starshipss-btn:hover {
+  opacity: 0.8;
+}
 
 .character-div {
   display: flex;
@@ -57,6 +167,4 @@ button {
 .character-info {
   position: relative;
   margin-left: 15%;
-  
-  
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Planets = () => {
+const Planets = (props) => {
   const [planets, setPlanets] = useState([]);
   const [selectedPlanet, setSelectedPlanet] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,41 +39,46 @@ const Planets = () => {
       button.removeEventListener("click", handleClick);
     };
   });
-
   return (
-    <div className="character-div">
-      <div>
-        {planets.length > 0 && (
-          <div>
-            <ul>
-              {planets.map((planet) => (
-                <li 
-                  key={planet.url} 
-                  onClick={() => fetchPlanet(planet.url)}>
-                  {planet.name}
-                </li>
-              ))}
-            </ul>
-            <button onClick={handlePrev} disabled={currentPage === 1}>
-              Prev
-            </button>
-            <button onClick={handleNext} disabled={currentPage === 6}>
-              Next
-            </button>
-          </div>
-        )}
-      </div>
+    <div>
+      {props.state === "planets" && (
+        <div>
+          {planets.length > 0 && (
+            <div>
+              <div className="info-btns">
+                {planets.map((planet) => (
+                  <button
+                    key={planet.url}
+                    onClick={() => fetchPlanet(planet.url)}>
+                    {planet.name}
+                  </button>
+                ))}
+              </div>
+              <div className="next-btn">
+              <button onClick={handlePrev} disabled={currentPage === 1}>
+                Prev
+              </button>
+              <button onClick={handleNext} disabled={currentPage === 6}>
+                Next
+              </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
-      {selectedPlanet.name && (
-        <div className="character-info">
+      {props.state === "planets" && selectedPlanet.name && (
+        <div className="information">
+        <div>
           <h3>{selectedPlanet.name}</h3>
-          <p>Rotation Time: {selectedPlanet.rotation_period}</p>
-          <p>Orbital Time: {selectedPlanet.orbital_period}</p>
-          <p>Diameter: {selectedPlanet.diameter}</p>
+          <p>Rotation time: {selectedPlanet.rotation_period} days</p>
+          <p>Orbital time: {selectedPlanet.orbital_period} days</p>
+          <p>Diameter: {selectedPlanet.diameter} km</p>
           <p>Climate: {selectedPlanet.climate}</p>
           <p>Gravity: {selectedPlanet.gravity}</p>
           <p>Terrain: {selectedPlanet.terrain}</p>
           <p>Population: {selectedPlanet.population}</p>
+          </div>
         </div>
       )}
     </div>
