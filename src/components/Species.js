@@ -18,7 +18,7 @@ const Species = (props) => {
     };
 
     if (inputValue !== '') {
-      props.setState('search')
+      // props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
@@ -73,8 +73,24 @@ const Species = (props) => {
     <div>
       {props.state === "species" && (
         <div>
-          <input placeholder="Search For Species..." type="text" onKeyDown={handleKeyDown} />
-          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <div className="input-search">
+            <input className="input-search-field" placeholder="Search For Species..." type="text" onKeyDown={handleKeyDown} />
+          </div>
+          {props.state === "species" && selectedSpecies.name && (
+        <div className="information">
+            <div>
+            <h3>{selectedSpecies.name}</h3>
+          <p>Type: {selectedSpecies.classification}</p>
+          <p>Designation: {selectedSpecies.designation}</p>
+          <p>Average height: {selectedSpecies.average_height} cm</p>
+          <p>Skin color(s): {selectedSpecies.skin_colors}</p>
+          <p>Hair color(s): {selectedSpecies.hair_colors}</p>
+          <p>Eye color(s): {selectedSpecies.eye_colors}</p>
+          <p>Average lifespan: {selectedSpecies.average_lifespan} years</p>
+            </div>
+        </div>
+      )}
+      {props.state === 'species' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
           <p>Classification: {searchedItem[0].classification}</p>
           <p>Designation: {searchedItem[0].designation}</p>
           <p>Average height: {searchedItem[0].average_height} cm</p>
@@ -84,10 +100,12 @@ const Species = (props) => {
           <p>Average lifespan: {searchedItem[0].average_lifespan} years</p></div></div> : null} 
           {noFound && <p>nothing found</p>}
           {species.length > 0 && (
+            
             <div>
               <div className="info-btns">
                 {species.map((specie) => (
                   <button
+                    className="character-btn"
                     key={specie.url}
                     onClick={() => fetchSpecie(specie.url)}>
                     {specie.name}
@@ -95,30 +113,15 @@ const Species = (props) => {
                 ))}
               </div>
               <div className="next-btn">
-              <button onClick={handlePrev} disabled={currentPage === 1}>
-                Prev
-              </button>
-              <button onClick={handleNext} disabled={currentPage === 4}>
+                <button onClick={handlePrev} disabled={currentPage === 1}>
+                  Prev
+                </button>
+                <button onClick={handleNext} disabled={currentPage === 9}>
                 Next
               </button>
               </div>
             </div>
           )}
-        </div>
-      )}
-
-      {props.state === "species" && selectedSpecies.name && (
-        <div className="information">
-        <div>
-          <h3>{selectedSpecies.name}</h3>
-          <p>Type: {selectedSpecies.classification}</p>
-          <p>Designation: {selectedSpecies.designation}</p>
-          <p>Average height: {selectedSpecies.average_height} cm</p>
-          <p>Skin color(s): {selectedSpecies.skin_colors}</p>
-          <p>Hair color(s): {selectedSpecies.hair_colors}</p>
-          <p>Eye color(s): {selectedSpecies.eye_colors}</p>
-          <p>Average lifespan: {selectedSpecies.average_lifespan} years</p>
-          </div>
         </div>
       )}
     </div>
