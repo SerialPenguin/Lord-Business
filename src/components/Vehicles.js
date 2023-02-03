@@ -104,7 +104,7 @@ const Vehicles = (props) => {
             <p>Crew: {searchedItem[0].crew}</p>
             <p>Passengers: {searchedItem[0].passengers}</p>
             <p>Cargo capacity: {searchedItem[0].cargo_capacity} ton</p></div></div> : null} 
-          {noFound && <p>nothing found</p>}
+            {noFound && <div className="bad-search"><p>Your search didn't match anything in the database, please try again...</p></div>}
           {vehicles.length > 0 && (
             
             <div>

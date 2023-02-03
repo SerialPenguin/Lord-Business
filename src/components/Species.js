@@ -98,7 +98,7 @@ const Species = (props) => {
           <p>Hair colors: {searchedItem[0].hair_colors}</p>
           <p>Eye colors: {searchedItem[0].eye_colors}</p>
           <p>Average lifespan: {searchedItem[0].average_lifespan} years</p></div></div> : null} 
-          {noFound && <p>nothing found</p>}
+          {noFound && <div className="bad-search"><p>Your search didn't match anything in the database, please try again...</p></div>}
           {species.length > 0 && (
             
             <div>

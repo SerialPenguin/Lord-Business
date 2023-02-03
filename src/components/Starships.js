@@ -100,7 +100,7 @@ const Starships = (props) => {
           <p>Max atmosphering speed: {searchedItem[0].max_atmosphering_speed} km/h</p>
           <p>Crew: {searchedItem[0].crew}</p>
           <p>Passangers: {searchedItem[0].passengers}</p></div></div> : null} 
-          {noFound && <p>nothing found</p>}
+          {noFound && <div className="bad-search"><p>Your search didn't match anything in the database, please try again...</p></div>}
           {starships.length > 0 && (
             
             <div>
