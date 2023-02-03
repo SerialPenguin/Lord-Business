@@ -18,7 +18,7 @@ const Starships = (props) => {
     };
 
     if (inputValue !== '') {
-      props.setState('search')
+      // props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
@@ -72,44 +72,13 @@ const Starships = (props) => {
     <div>
       {props.state === "starships" && (
         <div>
-          <input placeholder="Search For Starship..." type="text" onKeyDown={handleKeyDown} />
-          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
-          <p>Model: {searchedItem[0].model}</p>
-          <p>Manufacturer: {searchedItem[0].manufacturer}</p>
-          <p>Cost in credits: {searchedItem[0].cost_in_credits}</p>
-          <p>Length: {searchedItem[0].length} m</p>
-          <p>Max atmosphering speed: {searchedItem[0].max_atmosphering_speed} km/h</p>
-          <p>Crew: {searchedItem[0].crew}</p>
-          <p>Passangers: {searchedItem[0].passengers}</p></div></div> : null} 
-          {noFound && <p>nothing found</p>}
-          {starships.length > 0 && (
-            <div>
-              <div className="info-btns">
-                {starships.map((starship) => (
-                  <button
-                    key={starship.url}
-                    onClick={() => fetchStarship(starship.url)}>
-                    {starship.name}
-                  </button>
-                ))}
-              </div>
-              <div className="next-btn">
-              <button onClick={handlePrev} disabled={currentPage === 1}>
-                Prev
-              </button>
-              <button onClick={handleNext} disabled={currentPage === 4}>
-                Next
-              </button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {props.state === "starships" && selectedStarship.name && (
+          <div className="input-search">
+            <input className="input-search-field" placeholder="Search For Starships..." type="text" onKeyDown={handleKeyDown} />
+          </div>
+          {props.state === "starships" && selectedStarship.name && (
         <div className="information">
-          <div>
-            <h3>{selectedStarship.name}</h3>
+            <div>
+                       <h3>{selectedStarship.name}</h3>
             <p>Model: {selectedStarship.model}</p>
             <p>Manufacturer: {selectedStarship.manufacturer}</p>
             <p>Cost: {selectedStarship.cost_in_credits} credits</p>
@@ -120,10 +89,45 @@ const Starships = (props) => {
             </p>
             <p>Crew: {selectedStarship.crew}</p>
             <p>Passengers: {selectedStarship.passengers}</p>
-          </div>
+            </div>
+        </div>
+      )}
+          {props.state === 'starships' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <p>Model: {searchedItem[0].model}</p>
+          <p>Manufacturer: {searchedItem[0].manufacturer}</p>
+          <p>Cost in credits: {searchedItem[0].cost_in_credits}</p>
+          <p>Length: {searchedItem[0].length} m</p>
+          <p>Max atmosphering speed: {searchedItem[0].max_atmosphering_speed} km/h</p>
+          <p>Crew: {searchedItem[0].crew}</p>
+          <p>Passangers: {searchedItem[0].passengers}</p></div></div> : null} 
+          {noFound && <p>nothing found</p>}
+          {starships.length > 0 && (
+            
+            <div>
+              <div className="info-btns">
+                {starships.map((starship) => (
+                  <button
+                    className="character-btn"
+                    key={starship.url}
+                    onClick={() => fetchStarship(starship.url)}>
+                    {starship.name}
+                  </button>
+                ))}
+              </div>
+              <div className="next-btn">
+                <button onClick={handlePrev} disabled={currentPage === 1}>
+                  Prev
+                </button>
+                <button onClick={handleNext} disabled={currentPage === 9}>
+                Next
+              </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 };
+
 export default Starships;

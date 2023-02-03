@@ -20,7 +20,7 @@ const Vehicles = (props) => {
     };
 
     if (inputValue !== '') {
-      props.setState('search')
+      // props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
@@ -79,8 +79,24 @@ const Vehicles = (props) => {
     <div>
       {props.state === "vehicles" && (
         <div>
-            <input placeholder="Search For Vehicles..." type="text" onKeyDown={handleKeyDown} />
-            {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
+          <div className="input-search">
+            <input className="input-search-field" placeholder="Search For Vehicle..." type="text" onKeyDown={handleKeyDown} />
+          </div>
+          {props.state === "vehicles" && selectedVehicle.name && (
+        <div className="information">
+            <div>
+            <h3>{selectedVehicle.name}</h3>
+            <p>Model: {selectedVehicle.model}</p>
+            <p>Manufacturer: {selectedVehicle.manufacturer}</p>
+            <p>Cost: {selectedVehicle.cost_in_credits} credits</p>
+            <p>Length: {selectedVehicle.length} m</p>
+            <p>Crew: {selectedVehicle.crew}</p>
+            <p>Passengers: {selectedVehicle.passengers}</p>
+            <p>Cargo capacity: {selectedVehicle.cargo_capacity} ton</p>
+            </div>
+        </div>
+      )}
+           {props.state === 'vehicles' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].name)}</h3> 
             <p>Model: {searchedItem[0].model}</p>
             <p>Manufacturer: {searchedItem[0].manufacturer}</p>
             <p>Cost: {searchedItem[0].cost_in_credits} credits</p>
@@ -90,10 +106,12 @@ const Vehicles = (props) => {
             <p>Cargo capacity: {searchedItem[0].cargo_capacity} ton</p></div></div> : null} 
           {noFound && <p>nothing found</p>}
           {vehicles.length > 0 && (
+            
             <div>
               <div className="info-btns">
                 {vehicles.map((vehicle) => (
                   <button
+                    className="character-btn"
                     key={vehicle.url}
                     onClick={() => fetchVehicle(vehicle.url)}>
                     {vehicle.name}
@@ -101,30 +119,15 @@ const Vehicles = (props) => {
                 ))}
               </div>
               <div className="next-btn">
-              <button onClick={handlePrev} disabled={currentPage === 1}>
-                Prev
-              </button>
-              <button onClick={handleNext} disabled={currentPage === 4}>
+                <button onClick={handlePrev} disabled={currentPage === 1}>
+                  Prev
+                </button>
+                <button onClick={handleNext} disabled={currentPage === 9}>
                 Next
               </button>
               </div>
             </div>
           )}
-        </div>
-      )}
-
-      {props.state === "vehicles" && selectedVehicle.name && (
-        <div className="information">
-          <div>
-            <h3>{selectedVehicle.name}</h3>
-            <p>Model: {selectedVehicle.model}</p>
-            <p>Manufacturer: {selectedVehicle.manufacturer}</p>
-            <p>Cost: {selectedVehicle.cost_in_credits} credits</p>
-            <p>Length: {selectedVehicle.length} m</p>
-            <p>Crew: {selectedVehicle.crew}</p>
-            <p>Passengers: {selectedVehicle.passengers}</p>
-            <p>Cargo capacity: {selectedVehicle.cargo_capacity} ton</p>
-          </div>
         </div>
       )}
     </div>

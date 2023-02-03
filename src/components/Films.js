@@ -19,7 +19,7 @@ function Films(props) {
     };
 
     if (inputValue !== '') {
-      props.setState('search')
+      // props.setState('search')
       setNoFound(false)
       fetchSearch();
     }
@@ -63,7 +63,7 @@ function Films(props) {
       {props.state === "films" && (
         <div>
           <input placeholder="Search For Film..." type="text" onKeyDown={handleKeyDown} />
-          {props.state === 'search' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].title)}</h3> 
+          {props.state === 'films' && searchedItem !== null ?  <div className="information"> <div><h3>Found: {JSON.stringify(searchedItem[0].title)}</h3> 
           <p>Episode nr: {searchedItem[0].episode_id}</p>
           <p>Director: {searchedItem[0].director}</p>
           <p>Producer: {searchedItem[0].producer}</p>
