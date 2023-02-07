@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.e1d88d37.css",
-    "main.js": "/static/js/main.f4be94b6.js",
-    "static/media/StarWarsDarth.png": "/static/media/StarWarsDarth.84536c13b3bd06401542.png",
-    "static/media/species-btn.png": "/static/media/species-btn.1ae729039ce5b0324781.png",
-    "static/media/vehicles-btn.png": "/static/media/vehicles-btn.0cc2f30003b7e68c5375.png",
-    "static/media/characters-btn.png": "/static/media/characters-btn.eba811862e32233115ba.png",
-    "static/media/planets-btn.png": "/static/media/planets-btn.c45a1e7409082ad2dea9.png",
-    "static/media/films-btn.png": "/static/media/films-btn.5b23c118f9446fa36acd.png",
-    "static/media/starships-btn.png": "/static/media/starships-btn.193ba91fed636941bca4.png",
-    "index.html": "/index.html",
-    "main.e1d88d37.css.map": "/static/css/main.e1d88d37.css.map",
-    "main.f4be94b6.js.map": "/static/js/main.f4be94b6.js.map"
+    "main.css": "/star/static/css/main.1e3d4992.css",
+    "main.js": "/star/static/js/main.f4be94b6.js",
+    "static/media/StarWarsDarth.png": "/star/static/media/StarWarsDarth.84536c13b3bd06401542.png",
+    "static/media/species-btn.png": "/star/static/media/species-btn.1ae729039ce5b0324781.png",
+    "static/media/vehicles-btn.png": "/star/static/media/vehicles-btn.0cc2f30003b7e68c5375.png",
+    "static/media/characters-btn.png": "/star/static/media/characters-btn.eba811862e32233115ba.png",
+    "static/media/planets-btn.png": "/star/static/media/planets-btn.c45a1e7409082ad2dea9.png",
+    "static/media/films-btn.png": "/star/static/media/films-btn.5b23c118f9446fa36acd.png",
+    "static/media/starships-btn.png": "/star/static/media/starships-btn.193ba91fed636941bca4.png",
+    "index.html": "/star/index.html",
+    "main.1e3d4992.css.map": "/star/static/css/main.1e3d4992.css.map",
+    "main.f4be94b6.js.map": "/star/static/js/main.f4be94b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1d88d37.css",
+    "static/css/main.1e3d4992.css",
     "static/js/main.f4be94b6.js"
   ]
 }
