@@ -4,8 +4,9 @@ import "../index.css";
 export default function Header(props) {
   return (
     <header className="page-header">
+     <h1 className="rubrik">Star Wars-ipedia</h1>
 
-     <img src="../assets/Rubrik.png" alt="Star-wars" className="header-img"></img>
+    
     
      <div className="btn-container">
 
@@ -44,8 +45,7 @@ export default function Header(props) {
                });
                props.setState("films");
           }}></button>
-
-          <button
+           <button
           id="species"
           className="speciess-btn"
           onClick={() => {
@@ -87,3 +87,4 @@ export default function Header(props) {
     
   );
 }
+
